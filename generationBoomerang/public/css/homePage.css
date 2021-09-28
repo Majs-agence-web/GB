@@ -1,0 +1,47 @@
+video#bgvid {
+	position: fixed; right: 0; bottom: -50;
+  min-width: 100%; min-height: 100%;
+  width: 100%; height: auto; z-index: -100; 
+  background-size: cover;
+  }
+
+  .backgroundHomePage{
+	  background-color: rgb(132,132,132);
+  }
+  .tailleBackground{
+	height: 800px;
+}
+
+  @media (max-width: 1200px){
+	
+	#bgvid {display: none; }
+	.backgroundSansVideo{background-color: rgb(132,132,132);}
+	.tailleBackground{height: 800px;}
+	.boutonVideo{display: none;}
+}  
+  
+.headerBackground{
+	background-color: rgba(74,74,74);	
+}
+
+.searchHome {
+	background-color: transparent;
+	border: 0px;
+	border-bottom: 2px solid white;
+	width:50%;
+    outline: none; 
+    box-shadow: none; 
+}
+i{
+	color:white;
+}
+
+.logoHeader{
+	width:25%; 
+	height: auto;
+}
+
+.homeButton{
+	border-radius:22px;
+}
+

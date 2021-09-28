@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<script>
+       function myFunction(element) {
+              window.location.assign("/publications?sort="+element.value+"")
+        }
+</script>
+       
+            
+                
+<div class="container pt-5 pb-5">
+    <div class="d-flex pb-5 justify-content-center">
+
+        <form action="{{path('articles_publications_index')}}" method="POST" class="d-flex  justify-content-center inputRechercheArticle">
+            <img src="{{ asset ('/img/icones/boomerangblanc.png')}}" alt="boomerang blanc" style="width:5%;" class="mt-5">
+
+            <div class="my-auto  d-flex" style="color:black;">
+                <input class="my-auto pl-3" placeholder="Rechercher..." name="keyWord" style="color:black;outline:none">
+            </div>
+            <div class="my-auto d-flex">
+                <button class="btn-loupe my-auto" type="submit"><i class="fas fa-search fa-2x"></i></button>
+            </div>
+            
+            <img src="{{ asset ('/img/icones/boomerangblanc2.png')}}" alt="boomerang blanc" style="width:5%;" class="mb-5">
+        </form> 
+    </div>
+    <div class="form-group trierArticles" style="width:33%">                 
+        <select class="form-control btn" id="sel1" onchange="myFunction(this)" placeholder="trier">
+            <option>Trier par...</option>
+            <option>{{option1}}</option>
+            <option>{{option2}}</option>
+        </select>
+    </div>
+
+    {# <div class="form-group trierArticles" style="width:33%">                 
+        <select class="form-control btn" id="sel2" onchange="myFunction(this)" placeholder="trier">
+            <option>Trier par...</option>
+            <option>{{option1}}</option>
+            <option>{{option2}}</option>
+        </select>
+    </div> #}
+    
+    <div class="row justify-content-md-center mb-0">  
+
+        {#  Affichage Article INNOVATION #}
+        {% for article in articles|sortByField('createdAt',sort)%}  
+            <div class="col-xl-3 offset-xl-0 col-lg-4 offset-lg-0 col-md-5 offset-md-1 col-sm-10 offset-md-1 col-xs-12">              
+                {% include 'articles/_articles.html.twig' %}
+            </div>
+        {% endfor %}  
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        {{ knp_pagination_render(articles) }}
+    </div>
+
+            
+</div>
+
+{% endblock %}
+{% block javascripts %}
+   
+{% endblock %}    

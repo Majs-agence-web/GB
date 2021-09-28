@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<h1 class="text-center">Offres de vis ma vie</h1>
+ 
+{{path('')}}
+<div class="container articleShowBackground">
+    <div class="row p-4">
+        
+        {# Affichage Titre annonce #}
+            <div class="col-5 text-center ">
+                <h4 class="align-middle">{{ experienceVisMaVie.titreAnnonce}}</h4>
+            </div>
+    </div>
+
+</div>
+
+<div class="row-12 text-center p-3 mt-4 mb-4 pb-5">
+    {# Affichage de l'offre #}  
+ 
+    <div> 
+        {{ experienceVisMaVie.description }}   
+    </div>
+      
+
+        
+       
+
+
+
+</div>
+
+{% endblock %}

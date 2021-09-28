@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+   
+
+{% block body %}      
+          
+                
+<div class="container backgroundContainer p-5">
+{#  Logo  GB #}
+        {# <div class="d-flex">
+            <img src="{{ asset('/img/logoGBnoir.png') }}" alt="generationBoomerang logo" class="logoHeader pt-1 pb-3 mx-auto">
+        </div> #}
+        <div class="text-center">
+           <h2 class="font-weight-bold">ÉVOLUTION DES MÉTIERS</h2>
+        </div> 
+
+{# Icone Pôle + Nom #}
+<div class="row pt-5">
+    <div class="col-4 flex-column">
+        <div class="text-center col-12">
+            <img src="{{ asset('/img/iconePole/iconeEvoM.png') }}" class="mx-auto" alt="logo ampoule"  style="width: 9em; height: auto;"> 
+        </div>
+        <div class="text-center pt-3 col-12">
+            <a class="mx-auto font-weight-bold" style="font-size:1.3em;">ÉVOLUTION DES MÉTIERS</a>
+        </div>
+    </div> 
+     
+    <div class="col-3"></div>
+{# Avatar et Nom #}
+    <div class="col-5">
+        <div class="text-center col-12">
+            <img class="mx-auto font-weight-bold" src="{{ asset('/images/experts/Francis.png') }}" alt="avatar de l'utilisateur" style="height: 10em;position: relative;">
+        </div>
+        <div class="text-center pt-3 col-12">
+            <a class="text-center font-weight-bold">Francis Descamps</a></br>
+            <a class="text-center ">Architecte DPLG, diplômé de l’Institut de la construction Industrialisée CNAM, fondateur de l’Agence ARCATURE</a>
+        </div> 
+    </div> 
+</div>
+
+{# Descriptif #}
+<div class="pb-5 pt-4">    
+    <a class="font-weight-bold" style="font-size:1.3em;">Vocation</a>
+</br>
+    <p style="font-size:1.2em;">Être un centre de réflexion et de proposition concernant tous les nouveaux besoins, métiers ; créer de l’emploi et de la valeur en plaçant l’Homme et ses valeurs au cœur de l’entreprise.</p>
+</br>
+    <a class="font-weight-bold" style="font-size:1.3em;">Conviction</a>
+</br>
+    <p style="font-size:1.2em;">Regrouper des personnes de bonne volonté afin de partager nos expériences en vue de développer une plateforme d’information sur les innovations technologiques, l’évolution de la société et les nouveaux besoins qui en découlent.
+                                </br>
+                                Cibles : les jeunes et les ainés car nous sommes dans une société inter générationelle.
+                                </br>
+                                Les besoins : Ils sont communs et découlent de l’analyse faite sur les innovations technologiques et l’évolution de la société.
+    </p>
+     <p style="font-size:1.2em;" class="font-weight-bold">
+                                Mettre en place le process et les outils transversaux adaptés…
+     </p>
+
+</div>
+
+{# Articles #}
+
+<div class="row pb-5 pt-5">    
+    <div class="col">    
+        <div class="row">
+            {% for article in pole.articles | sort | slice(0,3) %}                
+            <div class="col-6 col-lg-4">
+                    {% include 'articles/_articles.html.twig' %}
+            </div>                
+            {% endfor %}
+        </div>    
+    </div>       
+</div>
+
+</div>
+ {% block javascripts %}
+
+{% endblock %}  
+
+{% endblock %}
+

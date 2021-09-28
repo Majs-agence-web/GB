@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+   
+
+{% block body %}      
+          
+                
+<div class="container backgroundContainer p-5">
+{#  Logo  GB #}
+        {# <div class="d-flex">
+            <img src="{{ asset('/img/logoGBnoir.png') }}" alt="generationBoomerang logo" class="logoHeader pt-1 pb-3 mx-auto">
+        </div> #}
+        <div class="text-center">
+           <h2 class="font-weight-bold">IMMOBILIER & SILVER ÉCONOMY</h2>
+        </div> 
+
+{# Icone Pôle + Nom #}
+<div class="row pt-5">
+    <div class="col-4 flex-column">
+        <div class="text-center col-12">
+            <img src="{{ asset('/img/iconePole/iconeImmo.png') }}" class="mx-auto" alt="logo ampoule"  style="width: 9em; height: auto;"> 
+        </div>
+        <div class="text-center pt-3 col-12">
+            <a class="mx-auto font-weight-bold" style="font-size:1.3em;">IMMOBILIER & SILVER ÉCONOMY</a>
+        </div>
+    </div> 
+     
+    <div class="col-3"></div>
+{# Avatar et Nom #}
+    <div class="col-5">
+        <div class="text-center col-12">
+            <img class="mx-auto font-weight-bold" src="{{ asset('/images/experts/Alain.png') }}" alt="avatar de l'utilisateur" style="height: 10em;position: relative;">
+        </div>
+        <div class="text-center pt-3 col-12">
+            <a class="text-center font-weight-bold">Alain Bechade</a></br>
+            <a class="text-center ">Docteur en droit, Chartered Surveyor, FRICS, Professeur au Conservatoire National des Arts et Métiers, Directeur de l’ICH.</a>
+        </div> 
+    </div> 
+</div>
+
+{# Descriptif #}
+<div class="pb-5 pt-4">    
+    <a class="font-weight-bold" style="font-size:1.3em;">Vocation</a>
+</br>
+    <p style="font-size:1.2em;">l’enseignement a toujours été le fil rouge de sa vie professionnelle.
+                                </br>
+                                Antidogmatique par excellence. Il a une hypothèse, il la conceptualise et l’ouvre à la discussion.
+    </p>
+</br>
+    <a class="font-weight-bold" style="font-size:1.3em;">Conviction</a>
+</br>
+    <p style="font-size:1.2em;">L’Immobilier n’a rien à envier à la finance. Ni en compétence, ni en erreur. Ce secteur économique mérite d’autant plus d’être tiré vers le haut.
+    </p>
+    <p style="font-size:1.2em;" class="font-weight-bold">
+                                Préparer une nouvelle génération à mieux comprendre l’immobilier, afin de réagir avec raison et non plus seulement par émotions. 
+    </p>
+</div>
+
+
+{# Articles #}
+
+<div class="row pb-5 pt-5">    
+    <div class="col">    
+        <div class="row">
+            {% for article in pole.articles | sort | slice(0,3) %}                
+            <div class="col-6 col-lg-4">
+                    {% include 'articles/_articles.html.twig' %}
+            </div>                
+            {% endfor %}
+        </div>    
+    </div>       
+</div>
+
+
+</div>
+ {% block javascripts %}
+
+{% endblock %}  
+
+{% endblock %}
+

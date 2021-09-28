@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<style>
+   
+</style>
+
+<div class="container mt-4 mb-4">
+    <h2 class="text-center font-weight-bold mb-4" style="color:white;">LES MEMBRES DE NOTRE COMMUNAUTÉ</h2>
+    
+    <div class="d-flex p-2" style="background-color:rgb(32,0,122);border-radius:10px;">
+        
+        <form class="form-inline" action="{{path('annuaire')}}" method="POST"> 
+            <input class="form-control" placeholder="Rechercher" name="lastName">
+            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        <div class="text-center buttonCreatePub">
+                <a class="p-2 btn my-auto" href="{{ path('annuaire')}}">Rafraîchir</a>
+        </div> 
+        
+    </div>
+
+    <div class="row myContainer mx-auto backgroundContainer mt-4 mb-4 pt-3 pl-3 pr-3 ">
+    
+        {% for annuaire in annuaires %}
+            <div class="col-lg-6 col-sm-12 d-flex mb-3" >
+            <a href="profil/{{annuaire.user.firstName}}_{{annuaire.user.lastName}}">
+                <div class="d-flex" style="position: relative;width: 7em;height: 7em;overflow: hidden;border-radius: 50%;border: 1px solid black;background-color:black;">
+                    <img class="mx-auto my-auto" src="{{ vich_uploader_asset(annuaire.user, 'imageFile')  }}" alt="image d'illustration" style="height: 100%;position: relative;">
+                </div>
+                <div class=" flex-column my-auto  pl-3" class="fontUserCard">
+                    <a  href="profil/{{annuaire.user.firstName}}_{{annuaire.user.lastName}}" style="color:black;font-size:1em;"><strong>{{annuaire.user.firstName}} {{annuaire.user.lastName}}</strong></a>
+                    {% if (annuaire.user.entreprise) %}
+                        <div class="fontUserCard"><a><strong>Fonction :</strong> <a>{{annuaire.fonction}}</a></div>
+                        <div class="fontUserCard"><a><strong>Chez :</strong> {{annuaire.user.entreprise.nom}}</a></div>
+                    {% elseif annuaire.userFormations[0].formation != NULL %} 
+                        <div class="fontUserCard"><a><strong>Formation :</strong> {{annuaire.userFormations[0].formation.intitule}}</a></div>
+                        <div class="fontUserCard"><a><strong>Etablissement :</strong> AFPA</a></div>
+                    {% else %}   
+                        <div class="">Pas d'emploi précisé</div>
+                    {% endif %}
+                    <div class="fontUserCard"><a><strong>Région:</strong> {{annuaire.user.Adresse.region}}</a></div>
+                    {# <div class="fontUserCard"><a>Formation: {{annuaire.userFormations[0].formation.intitule}}</a></div> #}
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+        
+        
+    </div>
+    </div>
+
+{% endblock %}

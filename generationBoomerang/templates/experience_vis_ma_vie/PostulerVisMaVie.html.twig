@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container backgroundContainer p-4">
+        <div class="row ">
+            <div class="col-lg-9 col-sm-12 mx-auto">
+                <h2 class="text-center">Postulez pour une expérience Changer de vie</h2>
+
+                {{form_start(form)}}
+                <div class="col-lg-8 col-sm-12 mx-auto ">
+                    <div class="jumbotron">
+                        <h5 class="text-center">Recapitulatif de l'offre</h5>
+                        <hr>
+                        <p class="text-center">{{experienceVisMaVie.description}}</p>
+                    </div>
+                </div>
+             
+                    <div class="mx-auto">
+                        <div class="row">   
+                            <div class="col-lg-6 col-sm-12 ">
+                                {{form_row(form.user.firstName, {'label':'Prénom','attr': {'placeholder': 'votre prénom', 'class':"form-control"}})}}
+                            </div>
+                            <div class="col-lg-6 col-sm-12 ">
+                                {{form_row(form.user.lastName, {'label':'Nom de Famille','attr': {'placeholder': 'votre nom', 'class':"form-control"}})}}
+                            </div>
+                        </div>
+                        <div class="justify-content-center">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12 ">
+                                    {{form_row(form.telephone, {'label':'Téléphone','attr': {'placeholder': 'votre numéro', 'class':"form-control"}})}}
+                                </div>
+                                <div class="col-lg-6 col-sm-12 ">
+                                    {{form_row(form.user.email, {'label':'e-mail','attr': {'placeholder': 'votre e-mail', 'class':"form-control"}})}}
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="justify-content-center">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-12">    
+                                    {{form_row(form.CvFile, {'label':'Importez votre CV','attr': {'placeholder': 'Veuillez importer votre CV', 'class':"form-control"}})}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                <div class="my-3">    
+                    {{form_row(form.descriptionMotivation, {'label':'Descrivez votre motivation','attr': {'placeholder': 'Veuillez décrire l\'experience que vous proposer','rows': '7', 'class':"form-control"}})}}
+                </div>
+                
+                
+                <div class="d-flex justify-content-end my-3 buttonFooter">
+                    <button type="submit" class="btn btn-success" >Postulez</button>
+                </div>
+                    
+                {{form_end(form)}}
+            </div>
+        </div>
+</div>           
+ 
+
+
+{% endblock %}
+

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+   
+
+{% block body %}      
+          
+                
+<div class="container backgroundContainer p-5">
+{#  Logo  GB #}
+        {# <div class="d-flex">
+            <img src="{{ asset('/img/logoGBnoir.png') }}" alt="generationBoomerang logo" class="logoHeader pt-1 pb-3 mx-auto">
+        </div> #}
+        <div class="text-center">
+           <h2 class="font-weight-bold">COMMUNICATION RECHERCHE ET DÉVELOPPEMENT</h2>
+        </div> 
+
+{# Icone Pôle + Nom #}
+<div class="row pt-5">
+    <div class="col-4 flex-column">
+        <div class="text-center col-12">
+            <img src="{{ asset('/img/iconePole/iconeCommu.png') }}" class="mx-auto" alt="logo ampoule"  style="width: 9em; height: auto;"> 
+        </div>
+        <div class="text-center pt-3 col-12">
+            <a class="mx-auto font-weight-bold" style="font-size:1.3em;">COMMUNICATION RECHERCHE ET DÉVELOPPEMENT</a>
+        </div>
+    </div> 
+     
+    <div class="col-3"></div>
+{# Avatar et Nom #}
+    <div class="col-5">
+        <div class="text-center col-12">
+            <img class="mx-auto font-weight-bold" src="{{ asset('/images/experts/AnneMarie.jpg') }}" alt="avatar de l'utilisateur" style="height: 10em;position: relative;">
+        </div>
+        <div class="text-center pt-3 col-12">
+            <a class="text-center font-weight-bold">Anne-Marie PINSOLLE</a></br>
+            <a class="text-center ">Expert en Management et Public Relation</a>
+        </div> 
+    </div> 
+</div>
+
+{# Descriptif #}
+<div class="pb-5 pt-4">    
+    <a class="font-weight-bold" style="font-size:1.3em;">Vocation</a>
+</br>
+    <p style="font-size:1.2em;">Rassembler autour de l’Excellence, les talents et les expériences des Femmes et des Hommes qui l’accompagnent.</p>
+</br>
+    <a class="font-weight-bold" style="font-size:1.3em;">Conviction</a>
+</br>
+    <p style="font-size:1.2em;">Faire évoluer les mentalités afin d’apporter à chaque citoyen la liberté de choisir. Répondre aux questions sociétales liées à notre monde en mutation. Intégrer au marché de l’immobilier et du Bâtiment une réflexion intergénérationnelle et permanente de recherche & développement au service de l’innovation et du confort d’usage pour tous.
+    </p>
+</br>
+    <p style="font-size:1.2em;" class="font-weight-bold">Accompagner les actions, les outils et les services liés aux nouveaux métiers et nouveaux savoirs…
+    </p>
+</div>
+
+{# Articles #}
+
+<div class="row pb-5 pt-5">    
+    <div class="col">    
+        <div class="row">
+            {% for article in pole.articles | sort | slice(0,3) %}                
+            <div class="col-6 col-lg-4">
+                    {% include 'articles/_articles.html.twig' %}
+            </div>                
+            {% endfor %}
+        </div>    
+    </div>       
+</div>
+
+
+</div>
+ {% block javascripts %}
+
+{% endblock %}  
+
+{% endblock %}
+

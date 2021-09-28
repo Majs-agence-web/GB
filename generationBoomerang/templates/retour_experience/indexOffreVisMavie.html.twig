@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class="my-3 text-center pb-4">les offres de notre communauté</h1>
+
+        <form action="{{path('offre_experience')}}" method="POST">
+            <input class="col-8" placeholder="Rechercher..." name="keyWord" style="">
+            <button class="btn-loupe" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        <div class="form-group" style="width:33%">
+                 <label for="sel1">Trier les offres</label>
+                 <select class="form-control btn" id="sel1" onchange="myFunction(this)">
+                    <option>{{option1}}</option>
+                    <option>{{option2}}</option>
+                </select>
+        </div>
+        <div class="row mb-0">
+               {% for ExperienceVisMaVie in ExperienceVisMaVies|sortByField('createdAt', sort) %}
+                    {% include 'retour_experience/_offres.html.twig' %}
+                {% endfor %}     
+        </div>
+
+
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% set url = path('offres_show', {'slug': experienceVisMaVie.slug}) %}
+
+     <div class="row col-4 ml-1" >
+        <div class="card bg-light">
+
+            <div class="card-title d-flex justify-content-center" >                        
+                            <a href="{{ url }}" class="d-flex align-items-center text-center textcarte" style=" ">{{experienceVisMaVie.titreAnnonce}}</br>-</br>                    
+                            {{experienceVisMaVie.description}}</a>                      
+            </div>
+
+        </div>
+
+     </div>

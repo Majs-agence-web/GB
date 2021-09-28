@@ -1,0 +1,218 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<h1 class="text-center my-3">Modification de l'article</h1>
+    <div class="container backgroundContainerNewPub pt-5">
+        <div class="d-flex">
+            <img src="{{ asset('/img/logoGBnoir.png') }}" alt="generationBoomerang logo" class="logoHeader pt-1 pb-3 mx-auto">
+        </div>
+                       
+                {{  form_start(form, {'attr': {'class':'px-5'}}) }} 
+                    <hr>
+                {% if pole is defined %}
+                    <div class="form-group">
+                        <select name="pole" id="pole" class="form-control col-3" required>
+                                <option value="">Choisissez le pôle</option>
+                            {% for pole in poles %}
+                                <option value="{{pole.id}}">{{pole.nomPole}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endif %}>
+                        {# Ajout du titre  #}
+                <div class="form-group mb-4">
+                    <div style="font-weight:bold;">{{form_label(form.titreArticle,'Titre de la publication')}}</div>                 
+                    {{form_widget(form.titreArticle, {'attr': {'class': 'col-4 form-control'}})}}
+                    <small class="" style="font-style: italic;">( 50 caractères maximum )</small>
+                </div>
+
+{# Ajout de l'accroche  #}
+                <div class="form-group mb-4">
+                    <div style="font-weight:bold;">{{form_label(form.accroche,'Phrase d\'accroche')}} </div>                      
+                    {{form_widget(form.accroche, {'attr': {'class': 'col-4 form-control'}})}}
+                    <small style="font-style: italic;">( 100 caractères maximum )</small>
+                </div>
+
+{# Ajout de l'intro  #}
+                <div class="form-group mb-4">
+                    <div style="font-weight:bold;">{{form_label(form.intro,'Introduction de la publication ( visible par tous )')}}</div>                       
+                    {{form_widget(form.intro, {'attr': {'rows': '5', 'class':'col-10 form-control'}})}}
+                    <small style="font-style: italic;">( 2000 caractères maximum )</small>
+                    <div id="demo" class="collapse" style="color:red;font-style:italic">L'introduction de la publication est obligatoire</div>
+                </div>
+
+{# Ajout de la contenu  #}
+                <div class="form-group mb-4">
+                    <div style="font-weight:bold;">{{form_label(form.contenuArticle,'Contenu de la publication ( visible uniquement par les membres )')}}</div>                      
+                    {{form_widget(form.contenuArticle, {'attr': {'rows': '5', 'class':'col-10 form-control'}})}}
+                    <small style="font-style: italic;">( 3600 caractères maximum )</small>
+                    <div id="demo2" class="collapse" style="color:red;font-style:italic">Le contenu de la publication est obligatoire</div>
+                </div>
+
+ {# Affichage des images #}
+                <div class="row">
+                {% for image in article.images %}
+                    
+                        <div class="col-2" id={{image.id}}>
+                            <img src="{{ vich_uploader_asset(image, 'imageFile')}}" class="img-thumbnail" alt="Cinque Terre" width="304px" height="236px"> 
+                            <a href="{{ path('image_remove', {'id' : image.id})}}" type="button" class="close" >&times;</a>
+                        </div>
+                    
+                {% endfor %}
+                </div>
+
+ {# Ajout des photos  #}
+                <div class="form-group mb-4 d-flex flex-column">
+                   <div style="font-weight:bold;">{{form_label(form.images,'Photos de la publication')}}</div>  
+                    
+                              <div id="preview2" class="p-2"></div>
+                                
+                    <small style="font-style: italic;">( jusque 5 photos au format .jpg, .jpeg, .png (poids maximum 10mo / photo) )</small>
+                    <div class="d-flex inputFormArticle" onchange="previewFiles()">{{form_widget(form.images, {'attr': {'id':'browse','class': 'col-4 form-control p-0'}})}}</div>
+                    <div id="items">                       
+                    </div>                    
+                </div>
+
+                
+{# Ajout de la videos  #}
+                <div class="form-group mb-4">
+                    <div style="font-weight:bold;">{{form_label(form.video,'Video de la publication')}}</div>  
+                    <small style="font-style: italic; color:red;">( Lien Youtube uniquement durée 15 minutes, vidéo non obligatoire )</small>
+                    {{form_widget(form.video, {'attr' : {'placeholder':'Copiez ici le lien de votre vidéo','class':'col-6 form-control'}})}}
+                </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" required> En rédigeant cette publication, vous acceptez <a href="" style="color:rgb(244,69,6)">les termes et conditions</a> la concernant</label>
+                        </div>
+                        <div class="my-3 buttonCreatePub">
+                            <button type="submit" class="btn ">{{ button_label|default('Mise à jour') }}</button>                            
+                        {% if pole is defined %}
+                            <a href="{{ path('articles_pole_index') }}" class="btn btn-primary ml-auto">Retour à la liste</a>  
+                        {% else %}
+                            <a href="{{ path('articles_publications_index') }}" class="btn btn-primary ml-auto">Retour à la liste</a>  
+                        {% endif %}
+                        </div>
+                {{ form_end(form) }} 
+                                           
+           
+    </div>
+{% endblock %}
+
+{% block _articles_images_widget %}
+    <p>vous pouvez ajouter vos propres images</p>
+    {{form_widget(form)}}
+
+    <div class="form-group">
+        <button form="button" id="add-image" class="btn btn-primary">ajouter une image</button>
+    </div>
+{% endblock %}
+
+{% block _articles_images_entry_row %}
+    {{ form_widget(form)}}
+{% endblock %}
+
+{% block _articles_images_entry_widget %}
+    <div class="form-group" id="block_{{id}}" >
+        <div class="row">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col">
+                        {{ form_widget(form.image)}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <button type="button" data-action="delete" data-target="#block_{{id}}" class="btn btn-danger">X</button>
+            </div> 
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %} 
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function onClickImgRemove(event){
+            event.preventDefault();
+
+            const url = this.href;
+
+            axios.get(url).then(function(response){
+                var id = response.data.id
+                document.getElementById(id).remove()
+            }).catch(function(error){
+                
+            });
+        }
+        document.querySelectorAll('a.close').forEach(function(link){
+            link.addEventListener('click', onClickImgRemove);
+        });
+
+          function handleDeleteButtons(){
+            $('button[data-action="delete"]').click(function(){
+                const target= this.dataset.target;
+                console.log(target);
+                $(target).remove();
+            })
+        }
+        handleDeleteButtons();
+
+     $(document).ready(function(){  
+            var i=1;  
+        $('#add').click(function(){  
+           
+           if (i<5){
+           $('#items').append('<div class="d-flex inputFormArticle inputAdded" id="removeDiv'+i+'"><input type="file" id="articles_images" multiple="multiple" name="articles[images][]" class="form-control mt-1" style="width:40%;"></input><button type="btn btn-danger" class="buttonRemove ml-1 mt-1" id="'+i+'" style="background-color:rgb(255,34,39);color:white;width:3em;border-radius:10px;">-</button></div>')
+           i++;  
+           }else{
+               print('Seulement 5 photos');
+           }
+         });  
+
+        $(document).on('click', '.buttonRemove', function(){  
+           var button_id = $(this).attr("id");   
+           $('#removeDiv'+button_id+'').remove();
+           i--; 
+        });  
+
+        $(document).on('click', '.resetButton', function(){             
+           $('.inputAdded').remove();  
+           i=1;
+        });
+     })
+
+     
+// Fonction multi upload image //
+function previewFiles() {
+
+  var preview = document.querySelector('#preview2');
+  var files   = document.querySelector('input[type=file]').files;
+
+  function readAndPreview(file) {
+
+    
+    if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+      var reader = new FileReader();
+
+      reader.addEventListener("load", function () {
+        var image = new Image();
+        image.height = 100;
+        image.title = file.name;
+        image.src = this.result;
+        image.style.padding = "0.3em";
+        preview.appendChild( image );
+      }, false);
+
+      reader.readAsDataURL(file);
+    }
+
+  }
+
+  if (files) {
+    [].forEach.call(files, readAndPreview);
+  }
+
+}
+    </script>
+{% endblock %}

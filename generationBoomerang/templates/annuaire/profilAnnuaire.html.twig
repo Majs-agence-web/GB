@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    
+{% endblock %}
+{% block title %}{% endblock %}
+    
+{% block body %}
+    <div class="myContainer mx-auto backgroundContainer mt-4 mb-4 p-5">
+        <h3 class="text-uppercase text-center">Informations du membre</h3>
+            <div class="d-flex flex-column my-5">
+                <img src="{{ vich_uploader_asset(annuaire.user, 'imageFile')}}" alt="generationBoomerang logo" class="mx-auto rounded" style="width:10em; height:auto;">
+                <h3 class="text-center font-weight-bold font-italic mx-auto">{{annuaire.user.firstName}} {{annuaire.user.lastName}}</h3>
+            </div>
+        <h3>Cursus</h3>
+        {% if annuaire.userFormations[0].formation != NULL %}
+            <p><span style="font-weight:bold">Formation:</span> {{annuaire.userFormations[0].formation.intitule}}<br>
+            <span style="font-weight:bold">Année d'optention:</span> {{annuaire.userFormations[0].anneePromo}}</p>
+        {% endif %}
+        <hr>
+        <h3>Carrière</h3>
+        {% if annuaire.user.entreprise %}
+            <p><span style="font-weight:bold">Nom de l'entreprise:</span> {{annuaire.user.entreprise.nom}}<br>
+        {% else %}
+            <p><span style="font-weight:bold">Nom de l'entreprise:</span> / <br>
+        {% endif %}
+
+        {% if annuaire.fonction %}
+            <span style="font-weight:bold">Poste occupé dans l'entreprise:</span> {{annuaire.fonction}}<br>
+         {% else %}
+            <span style="font-weight:bold">Poste occupé dans l'entreprise:</span> / <br>   
+         {% endif %}
+
+        {% if annuaire.user.Adresse %}    
+            <span style="font-weight:bold">Région:</span> {{annuaire.user.Adresse.region}}<p>
+        {% else %}  
+            <span style="font-weight:bold">Région:</span> / <p>
+        {% endif %}  
+        <hr>
+        <h3>Contact</h3>
+            <p><span style="font-weight:bold">E-mail:</span> {{annuaire.user.email}}<br>
+            <span style="font-weight:bold">Téléphone:</span> {{annuaire.user.telephone}}</p>
+
+        <div class="text-center buttonAnnonceVisMaVie mt-5">
+            <a class="p-2" href="{{ path('annuaire')}}">Retourner à l'annuaire</a>
+        </div>    
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+    {# <style>
+        .widget-footer, .notice-contribution{
+            display: none !important;
+            background-color: red !important;
+        }
+    </style>   #}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="myContainer mx-auto backgroundContainer m-4 pt-4 pl-4 pr-4">
+
+        <div class="d-flex">
+            <img src="{{ asset('/img/logoGBnoir.png') }}" alt="generationBoomerang logo" class="logoHeader pt-1 mx-auto">
+        </div>
+        <h3 class="h3 mb-3 mt-3 text-center pt-4 pb-4 font-weight-bold">ABONNEMENT</h3>
+        <iframe id="haWidget" allowtransparency="true" scrolling="auto" src="https://www.helloasso.com/associations/association-building-seniors-abs-ca-tient-la-route/adhesions/generation-boomerang/widget" style="width:100%;height:750px;border:none;" onload="window.scroll(0, this.offsetTop)"></iframe>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+
+        $("#haWidget").on("load", function() {
+            let head = $("#haWidget").contents().find("head");
+            let css = "<style>.widget-footer, .notice-contribution{display: none !important;}</style>";
+            $(head).append(css);
+        });
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+   
+
+{% block body %}      
+          
+                
+<div class="container backgroundContainer p-5">
+{#  Logo  GB #}
+        {# <div class="d-flex">
+            <img src="{{ asset('/img/logoGBnoir.png') }}" alt="generationBoomerang logo" class="logoHeader pt-1 pb-3 mx-auto">
+        </div> #}
+        <div class="text-center">
+           <h2 class="font-weight-bold">ÉVOLUTION DES SAVOIRS</h2>
+        </div> 
+
+{# Icone Pôle + Nom #}
+<div class="row pt-5">
+    <div class="col-4 flex-column">
+        <div class="text-center col-12">
+            <img src="{{ asset('/img/iconePole/iconeEvoS.png') }}" class="mx-auto" alt="logo ampoule"  style="width: 9em; height: auto;"> 
+        </div>
+        <div class="text-center pt-3 col-12">
+            <a class="mx-auto font-weight-bold" style="font-size:1.3em;">ÉVOLUTION DES SAVOIRS</a>
+        </div>
+    </div> 
+     
+    <div class="col-3"></div>
+{# Avatar et Nom #}
+    <div class="col-5">
+        <div class="text-center col-12">
+            <img class="mx-auto font-weight-bold" src="{{ asset('/images/experts/Xavier.png') }}" alt="avatar de l'utilisateur" style="height: 10em;position: relative;">
+        </div>
+        <div class="text-center pt-3 col-12">
+            <a class="text-center font-weight-bold">Xavier Tournillon</a></br>
+            <a class="text-center ">Directeur Technique et de la Transition Numérique du Bâtiment de PARIS-OUEST CONSTRUCTION</a>
+        </div> 
+    </div> 
+</div>
+
+{# Descriptif #}
+<div class="pb-5 pt-4">    
+    <a class="font-weight-bold" style="font-size:1.3em;">Vocation</a>
+</br>
+    <p style="font-size:1.2em;">Réaliser le déploiement du BIM dans l'entreprise, manager la Technique et l'Innovation.</p>
+</br>
+    <a class="font-weight-bold" style="font-size:1.3em;">Conviction</a>
+</br>
+    <p style="font-size:1.2em;">Dans l’entreprise être garant de la technicité, de l’expertise technique et réglementaire, responsable des choix constructifs des validations techniques et réglementaires tous corps d’état.
+                                </br>
+                                Dans la vie sociale : renforcer les compétences des adultes.
+                                Considérer l'éducation et la culture, comme moteurs du développement.
+                                Eduquer, partager : la clé du développement, un enjeu majeur pour la construction de l’avenir. 
+                                En réponse à la destruction accélérée de l'environnement :
+                                Affirmer ses choix préférentiels pour des solutions respectueuses et durables.
+    </p>
+     <p style="font-size:1.2em;" class="font-weight-bold">
+                                Ensemble, on va plus loin !
+     </p>
+</div>
+
+{# Articles #}
+
+<div class="row pb-5 pt-5">    
+    <div class="col">    
+        <div class="row">
+            {% for article in pole.articles | sort | slice(0,3) %}                
+            <div class="col-6 col-lg-4">
+                    {% include 'articles/_articles.html.twig' %}
+            </div>                
+            {% endfor %}
+        </div>    
+    </div>       
+</div>
+
+
+</div>
+ {% block javascripts %}
+
+{% endblock %}  
+
+{% endblock %}
+

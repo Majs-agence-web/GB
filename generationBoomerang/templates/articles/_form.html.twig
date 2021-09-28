@@ -1,0 +1,27 @@
+<div class="form-group md-6 offset-3">
+    
+    {{ form_start(form) }} 
+    
+        {{form_row(form.titreArticle, {'label':'le titre de l\'article','attr': {'placeholder': 'titre article', 'class':"form-control"}})}}
+    <div class="my-3">
+        {{form_row(form.contenuArticle, {'label':'le contenu de l\'article','attr': {'placeholder': 'contenu article', 'rows': '15', 'class':"form-control"}})}}
+    </div> 
+       
+    <div class="my-3">
+        {{form_row(form.video, {'label':'l\' url de la video ','attr': {'placeholder': 'Video', 'class':"form-control"}})}}
+    </div>
+    {# <div class="my-3">
+        {{form_row(form.images.imageFile, {'label':'Vos images','attr': {'placeholder': 'Image', 'class':"form-control"}})}}
+    </div> #}
+
+    <div class="my-3">
+        <button type="submit" class="btn btn-success">{{ button_label|default('créer') }}</button>
+        <a href="{{ path('articles_index') }}" class="btn btn-primary mx-3">Retour à la liste</a>  
+    </div>
+    
+</div>
+
+    {{ form_end(form) }}
+
+
+    

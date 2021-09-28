@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="myContainer mx-auto backgroundContainer mt-4 mb-4 pt-5 " >
+
+         <div class="col-12 formulaireSignin">
+{# LOGO #}
+            <div class="d-flex">
+                <img src="{{ asset('/img/logoGBnoir.png') }}" alt="generationBoomerang logo" class="logoHeader pt-1 mx-auto">
+            </div>
+         <div class="col-12 formulaireSignin">
+{# TITRE #}    
+        <h3 class="h3 mb-3 mt-3 text-center pt-4 pb-4">FORMULAIRE D'INSCRIPTION À L'ANNUAIRE</h3>            
+        <h3 class="h3 mb-3 mt-3 font-weight-bold font-italic pl-5">INFORMATIONS PERSONNELLES</h3>
+        <hr class="loginhrColor"> 
+        <div class="d-flex ">
+            <h4 class="text-justify pl-5 pr-5 font-weight-normal">Ces infos seront visible par les membres inscrit à l'annuaire
+                <a  target="_blank" href="/docs/Charte ABS-GB.pdf">Politique de confidentialité.</a> 
+            </h4>
+        </div>
+    
+
+        <div class="row md-6">
+            <div class="col  ">
+                
+                {{form_start(form)}}
+                    <h5 class="mb-3 mt-3 font-italic pt-4 pl-5">FORMATION</h5>
+                    <div class="form-group form-row">
+                        
+                        {# {{form_row(form.UserFormations, {'label': 'Promo', 'attr':{'placeholder': 'L\'année d\'obtention de votre diplome AFPA ','class':"form-control", 'value':"now"|date("Y") }} )}}  #}
+                        <div class="col-8">
+                            <label for="">Formation</label> 
+                                
+                            <a  data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3"><i class="far fa-caret-square-down" style="color:black;"></i></a>     
+                                
+                                <div class="collapse" id="collapseExample3">
+                                    <div class="accordion" id="accordionExample">
+                                        {% for secteur in secteurs %} 
+                                            {% set dataTarget = '#data' ~ secteur.id %}
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne">
+                                                    <h2 class="mb-0">
+                                                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target={{dataTarget}} aria-expanded="true" aria-controls="collapseOne">
+                                                            {{secteur.nomSecteur}}
+                                                        </button>
+                                                    </h2>
+                                                </div>
+                                                {% set ID = 'data' ~ secteur.id %}
+                                                <div id={{ID}} class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <div class="accordion" id="accordion">
+                                                            {% for domaine in secteur.domaines  %}
+                                                            {% set dataTarget2 = '#test' ~ secteur.id ~ domaine.id %}
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingTwo">
+                                                                    <h4 class="mb-0">
+                                                                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target={{dataTarget2}} aria-expanded="true" aria-controls="collapseTwo">
+                                                                            {{ domaine.nomDomaine }}       
+                                                                        </button>
+                                                                        {% set ID2 = 'test' ~ secteur.id ~ domaine.id %}
+                                                                        <div id={{ID2}} class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                                        {% for formation in domaine.formations  %}
+                                                                        {% set idCheck = 'gridCheck' ~ formation.id %}
+                                                                            <div class="card-body">
+                                                                                <div class="accordion" id="accordion2">
+                                                                                    <div class="form-group row">
+                                                                                            <div class="col-sm-10">
+                                                                                                <h6 class="mb-0">
+                                                                                                    <div class="form-check">
+                                                                                                        <input class="form-check-input" type="checkbox" id={{idCheck}} name="intitule" data-toggle="collapse" value="" data-target="#collapseExample3">
+                                                                                                        <label class="form-check-label" for={{idCheck}}>{{formation.intitule}}</label>
+                                                                                                    </div>
+                                                                                                </h6>
+                                                                                            </div>
+                                                                                    </div>
+                                                                                </div>    
+                                                                            </div> 
+                                                                        {% endfor %}           
+                                                                        </div>            
+                                                                    </h4>
+                                                                </div>    
+                                                            </div>    
+                                                        {% endfor %}  
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        {% endfor %}    
+                                    </div>
+                                </div>
+                            <input class="form-control" name="formationValue" value="" type="text "id="formationValue">
+                        </div>
+                        <div class="col-4">
+                            <label  for="promo">Promo</label>
+                            <select class="form-control" id="promo" name="promo"> 
+                                <option value="">Précisez l'année</option>
+                                {% for i in 0..70 %} 
+                                    <option value="{{ "now"|date("Y") - i }}">{{ "now"|date("Y") - i }}</option>
+                                {% endfor %}
+                            </select> 
+                        </div>
+                        {# {{form_row(form.formation, {'label': 'Formation', 'attr':{'placeholder': 'Veuillez sélectionner votre formation dans le menu déroulant','class':"form-control"}} )}} #}
+                    </div>
+                    
+                    <h5 class="mb-3 mt-3 font-italic pt-4 pl-5">ENTREPRISE</h5>
+
+                    <div class="form-group form-row">                        
+                        {# {{form_row(form.UserFormations, {'label': 'Promo', 'attr':{'placeholder': 'L\'année d\'obtention de votre diplome AFPA ','class':"form-control", 'value':"now"|date("Y") }} )}}  #}
+                        <div class="col-8">
+                            <label for="">Fonction</label> 
+                                
+                            <select class="choixFonction form-control" id="id_label_multiple" name="fonction" >
+                                {% for fonctionMetier in fonctionMetiers %} 
+                                    {# {% for metier in fonctionMetier.nomFonction %} #}
+                                        <optgroup label="{{fonctionMetier.nomFonction}}">
+                                            {% for metier in fonctionMetier.metier %}
+                                                <option value="{{metier.nomMetier}}">{{metier.nomMetier}}</option>
+                                            {% endfor %}
+                                        </optgroup>
+                                    {# {% endfor %} #}
+                                {% endfor %}
+                            </select> 
+                                                              
+                            {#<input class="form-control" name="fonctionValue" value="" type="text "id="fonctionValue">  #}
+                        </div>                        
+                    </div>
+
+
+
+
+                    <fieldset>
+                    
+                            {# {{form_row(form.fonction, {'label': 'Fonction', 'attr':{'placeholder': 'Indiquez la fonction que vous occupez actuellement dans votre entreprise','class':"form-control"}} )}} #}
+                            {# {{form_row(form.Annuaire.secteurActivite, {'label': 'Secteur d\'activité', 'attr':{'placeholder': 'veuillez entrer le secteur d\'activité de votre entreprise','class':"form-control"}} )}} #}
+                            {# {{form_row(form.entreprise, {'label': 'Entreprise', 'attr':{'placeholder': 'Veuillez saisir le nom de l\'entreprise','class':"form-control"}})}} #}
+                    </fielset>
+                    <div class="d-flex justify-content-center pb-5 pt-5 buttonFooter">
+                            <button type="submit" class="btn " style="width:300px;">S'enregistrer</button>
+                    </div>
+                {{form_end(form)}}
+            </div>
+        </div>
+    </div>
+    </div> 
+     </div> 
+    
+  
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        function onClickCheckbox(event)
+        {            
+            document.getElementById('formationValue').value = this.labels[0].innerText
+            
+             }
+
+       document.querySelectorAll('input.form-check-input').forEach(function(link){
+            link.addEventListener('click', onClickCheckbox);
+        })
+
+     
+        $(document).ready(function() {
+            $('.choixFonction').select2(
+                
+            );
+        });   
+
+
+    </script>
+{% endblock %}

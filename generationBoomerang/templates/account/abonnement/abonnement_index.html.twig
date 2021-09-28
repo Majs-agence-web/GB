@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container backgroundContainer rounded p-4">
+        <h2 class="text-uppercase text-center font-weight-bold pb-3">decouvrez tous nos abonnements</h2>
+
+        <p>L’accès au portail "Génération Boomerang" ©, marque de l'<strong>A</strong>ssociation <strong>B</strong>uilding <strong>S</strong>eniors©
+            étant limité, pour bénéficier de l’ensemble de nos services et publications, il vous est demandé
+            d’adhérer à l’<strong>A</strong>ssociation <strong>B</strong>uilding <strong>S</strong>eniors©, association loi 1901 d’intérêt général.
+        </p>
+        <div class="row">
+
+        <div class="d-flex" style="height:auto;"> 
+        {# Carte Etudiants #}
+            <div class="col-md-6">
+                <div class="card bg-light border-secondary mb-3" style="color:black;height:100%;">
+                    <div class="card-header text-center" style="font-size:1.3em;font-weight:bold;">Etudiants</div>
+                    <div class="card-body d-flex flex-column buttonFooter">
+                        <p class="card-text my-auto" style="color:black;">
+                            <strong>Pack étudiant : 9,99&euro; pour un an</strong><br>
+                            <small>VALIDATION sur présentation de la carte étudiante</small>
+                        </p>
+                        <a href="{{path('account_register')}}" class="align-content-end btn btn-secondary float-right  mt-2">Je m'inscris</a>
+                    </div>
+                </div>
+            </div>
+        {# Carte Actifs et retraités #}
+            <div class="col-md-6">
+                 <div class="card border-secondary bg-light mb-3" style="color:black;height:100%;">
+                    <div class="card-header text-center" style="font-size:1.3em;font-weight:bold;">Actifs et retraités</div>
+                    <div class="card-body d-flex flex-column buttonFooter">
+                        
+                           
+                       
+                        <p class="card-text my-auto" style="color:black;">
+                            <strong>- Pack standard : 49,99€ pour un an</strong></br>
+                            <strong>- Pack solidaire : 59,98€ pour un an</strong>
+                            : vous permettant de financer l’adhésion d’une
+                            personne inscrite à Pôle Emploi, en fin de droit, ou dans une mission locale
+                        </p>
+                        <a href="{{path('account_register')}}" class="align-content-end btn btn-secondary float-right  mt-2">Je m'inscris</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+     <div class="d-flex" style="height:auto;">   
+         {# Carte Demandeur d'emploi #}
+            <div class="col-md-6 mt-3">
+                <div class="card border-secondary bg-light" style="color:black;height:100%;">
+                    <div class="card-header text-center" style="font-size:1.3em;font-weight:bold;">Demandeurs d’emploi, personnes inscrites au RSA, inscrites dans une mission locale</div>
+                    <div class="card-body d-flex flex-column buttonFooter" style="color:black;">
+                        <p class="card-text my-auto" style="color:black;">Votre adhésion est financée par un membre actif ou retraité ayant choisi le
+                            pack solidaire. 
+                        </p>
+                        <small>
+                            VALIDATION sur présentation de l’attestation Pôle Emploi ou tout autre justificatif
+                        </small>
+                        
+                        <a href="{{path('account_register')}}" class="align-content-end btn btn-secondary float-right mt-2">Je m'inscris</a>
+                        
+                    </div>
+                </div>
+            </div>
+        {# Carte Entreprise #}
+            <div class="col-md-6 mt-3" >
+                 <div class="d-flex  card border-secondary bg-light" style="color:black;height:100%;">
+                    <div class="card-header text-center" style="font-size:1.3em;font-weight:bold;">Entreprises</div>
+                    <div class="d-flex flex-column my-auto card-body buttonFooter ">
+                        <p class="card-text my-auto" style="color:black;">
+                              <strong>NOUS CONSULTER</strong> pour toute demande d’inscription de plusieurs personnes,
+                             création d'une page entreprise et/ou d'un partenariat
+                        </p>   
+                                         
+                            <a href="#" class="align-content-end btn btn-secondary float-right  mt-2">Nous contacter</a>  
+                                             
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+{% endblock %}

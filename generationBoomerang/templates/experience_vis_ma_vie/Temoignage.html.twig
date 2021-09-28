@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+        <div class="row md-6">
+            <div class="col">
+                <h1 class="text-center">Témoignez sur votre expérience professionnelle</h1>
+
+                {{form_start(form)}}
+                <div class="my-3">
+                    {{form_row(form.titre, {'label':'Titre de votre témoignage','attr': {'placeholder': 'Veuillez attribuer un titre à votre témoignage', 'class':"form-control"}})}}
+                </div>
+                <div class="my-3">    
+                    {{form_row(form.contenu, {'label':'Témoignez','attr': {'placeholder': 'Ecrivez votre témoignage','rows': '15', 'class':"form-control"}})}}
+                </div>
+                <div class="my-3">    
+                    {{form_row(form.photo, {'label':'Importez votre photo','attr': {'class':"form-control"}})}}
+                </div>
+                <div class="my-3">    
+                    {{form_row(form.user, {'label':'identité de l\'utilisateur','attr': {'placeholder': 'l\'identité ', 'class':"form-control"}})}}
+                </div>    
+                    <div class="d-flex justify-content-end my-3 buttonFooter">
+                        <button type="submit" class="btn btn-success">Confirmez votre témoignage</button>
+                    </div>
+                {{form_end(form)}}
+            </div>
+        </div>
+</div>           
+
+
+
+{% endblock %}

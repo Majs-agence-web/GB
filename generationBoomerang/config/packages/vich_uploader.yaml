@@ -1,0 +1,34 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        article_image:
+            uri_prefix: /images/articles
+            upload_destination: '%kernel.project_dir%/public/images/articles'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+            
+            
+        user_image:
+            uri_prefix: /images/users
+            upload_destination: '%kernel.project_dir%/public/images/users'
+            namer: Vich\UploaderBundle\Naming\Base64Namer
+           
+
+        user_CV:
+            uri_prefix: /CV/users
+            upload_destination: '%kernel.project_dir%/public/CV/users'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            
+
+
+        user_document:
+            uri_prefix: /docs/users
+            upload_destination: '%kernel.project_dir%/public/docs/users'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+          

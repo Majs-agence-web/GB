@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    
+ <div class="myContainer mx-auto backgroundContainer mt-4 mb-4">
+        <h1 class="text-center mt-2 mb-2">Annonces Changer de vie</h1>
+        {#  Recherche #}
+        <div class="d-flex p-2 ml-3 mr-3" style="background-color:rgb(32,0,122);border-radius:10px;">
+            <form class="form-inline" action="{{path('experience_vis_ma_vie_index')}}" method="POST"> 
+            <input class="form-control" placeholder="Entrez la ville" name="villeEntreprise">
+            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        <div class="text-center buttonCreatePub">
+                <a class="p-2 btn my-auto" href="{{ path('experience_vis_ma_vie_index')}}">Rafraîchir</a>
+        </div>            
+        </div>
+        <div class="row m-3" >
+        {#  #}
+            {% for experience_vis_ma_vie in experience_vis_ma_vies %}
+        
+            <div class="col-lg-3 col-sm-6 mb-3 text-center" >
+                <div class="card" style="border-radius:11px;border:solid 2px rgb(244,69,6);">
+                    <div class="card-body d-flex flex-column" style="height:18em;">
+                        <div class="my-auto">
+                            <a class="text-center font-weight-bold " style="font-size:1.4em;color: rgb(32,0,122);">{{ experience_vis_ma_vie.TitreAnnonce }}</a>
+                        </div>
+                        <div class="card-text text-center">
+                        <p class="my-auto" ><em><strong>Période du :</strong></em></br>
+                        {{ experience_vis_ma_vie.DateDebut|date('d-m-y') }}</br>
+                        au</br>
+                        {{ experience_vis_ma_vie.DateFin|date('d-m-y') }}</br>
+                        <span class="mr-2 font-weight-bold" >Ville :</span>{{ experience_vis_ma_vie.villeEntreprise }}</p> 
+                        </div>
+                    <div class="text-center buttonAnnonceVisMaVie p-3">
+                        <a class="p-2" href="{{ path('experience_vis_ma_vie_show', {'slug': experience_vis_ma_vie.slug})}}">Consulter</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
+            {% endfor %}
+        </div>
+ </div>           
+
+    {# <a href="{{ path('experience_vis_ma_vie_new') }}">Create new</a> #}
+{% endblock %}

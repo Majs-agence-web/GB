@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+   
+
+{% block body %}      
+          
+                
+<div class="container backgroundContainer p-5">
+        <div class="d-flex">
+            <img src="{{ asset('/img/logoGBnoir.png') }}" alt="generationBoomerang logo" class="logoHeader pt-1 pb-3 mx-auto">
+        </div>
+        <div class="text-center">
+           <h2>PRESENTATION DES PÔLES</h2>
+        </div> 
+
+<div class="row pt-5">
+    <div class="text-center col-4 buttonPole1 pt-3">
+        <img src="{{ asset('/img/iconePole/iconeAmpoule.png') }}" alt="icone ampoule logo" class="mx-auto" style="width:50%;">        
+        <div class="row text-center">              
+            <p class="my-auto mx-auto">INNOVATION</p>                      
+        </div>
+            <a href="{{path('pole_description', { 'nomPole':'Innovation' } )}}" id="front" class="detailsPole btn row mx-auto">Détails</a>        
+    </div>
+    <div class="col-4">
+        <a></a>
+    </div>
+        
+    <div class="text-center col-4 buttonPole2 pt-3 ">
+        <img src="{{ asset('/img/iconePole/iconeEvoM.png') }}" alt="icone ampoule logo" class="mx-auto" style="width:50%;"> 
+        <p class="my-auto mx-auto">ÉVOLUTIONS DES MÉTIERS</p>
+        <a href="{{path('pole_description', { 'nomPole':'Evolution des métiers' } )}}"  id="back" class="detailsPole btn row mx-auto">Détails</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="text-center col-4 buttonPole3 pt-3 my-auto">
+        <img src="{{ asset('/img/iconePole/iconeEvoS.png') }}" alt="icone ampoule logo" class="mx-auto" style="width:50%;"> 
+        <p class="my-auto mx-auto">ÉVOLUTION DES SAVOIRS</p>
+        <a href="{{path('pole_description', { 'nomPole':'Evolution des savoirs' } )}}"  id="right" class="detailsPole btn row mx-auto">Détails</a>
+    </div>
+    
+    <div class="col-4 d-flex">
+        {#  Le Cube c'est une Pépite #}
+        <div class="scene mx-auto">
+            <div class="cube">
+                <a class="cube__face cube__face--front d-flex" href="{{path('pole_description', { 'nomPole':'Innovation' } )}}" class="mx-auto my-auto"><img src="{{ asset('/img/iconePole/iconeAmpoule.png') }}" alt="icone ampoule logo" class="mx-auto my-auto" style="width:60%;"></a>
+                <a class="cube__face cube__face--back d-flex" href="{{path('pole_description', { 'nomPole':'Evolution des métiers' } )}}"><img src="{{ asset('/img/iconePole/iconeEvoM.png') }}" alt="icone ampoule logo" class="mx-auto my-auto" style="width:60%;"></a>
+                <a class="cube__face cube__face--right d-flex" href="{{path('pole_description', { 'nomPole':'Evolution des savoirs' } )}}"><img src="{{ asset('/img/iconePole/iconeEvoS.png') }}" alt="icone ampoule logo" class="mx-auto my-auto" style="width:60%;"> </a>
+                <a class="cube__face cube__face--left d-flex" href="{{path('pole_description', { 'nomPole':'Communication Recherche et développement' } )}}"><img src="{{ asset('/img/iconePole/iconeCommu.png') }}" alt="icone ampoule logo" class="mx-auto my-auto" style="width:60%;"></a>
+                <a class="cube__face cube__face--top d-flex" href="{{path('pole_description', { 'nomPole':'Universal design & inclusive design' } )}}"><img src="{{ asset('/img/iconePole/iconeUniDes.png') }}" alt="icone ampoule logo" class="mx-auto my-auto" style="width:60%;"> </a>
+                <a class="cube__face cube__face--bottom d-flex" href="{{path('pole_description', { 'nomPole':'Immobilier & Silver Economy' } )}}"><img src="{{ asset('/img/iconePole/iconeImmo.png') }}" alt="icone ampoule logo" class="mx-auto my-auto" style="width:60%;"></a>
+            </div>
+        </div>    
+    </div>
+   
+    <div class="text-center col-4 buttonPole4 pt-3 my-auto">
+        <img src="{{ asset('/img/iconePole/iconeCommu.png') }}" alt="icone ampoule logo" class="mx-auto" style="width:50%;"> 
+         <p class="my-auto mx-auto">COMMUNICATION RECHERCHE ET DÉVELOPPEMENT</p>
+         <a href="{{path('pole_description', { 'nomPole':'Communication Recherche et développement' } )}}" id="left" class="detailsPole btn row mx-auto">Détails</a>
+    </div>
+</div>
+
+<div class="row pb-5">
+    <div class="text-center col-4 buttonPole5 pt-3 my-auto">
+       <img src="{{ asset('/img/iconePole/iconeUniDes.png') }}" alt="icone ampoule logo" class="mx-auto" style="width:50%;"> 
+         <p class="my-auto mx-auto">UNIVERSAL DESIGN & INCLUSIVE DESIGN</p>
+         <a href="{{path('pole_description', { 'nomPole':'Universal design & inclusive design' } )}}"  id="top" class="detailsPole btn row mx-auto">Détails</a>
+    </div>
+    
+    <div class="col-4">
+        <a></a>
+    </div>
+    
+    <div class="text-center col-4 buttonPole6 pt-3 my-auto">
+        <img src="{{ asset('/img/iconePole/iconeImmo.png') }}" alt="icone ampoule logo" class="mx-auto" style="width:50%;">         
+            <p class="my-auto mx-auto">IMMOBILIER & SILVER EXPÉRIENCE</p>        
+            <a href="{{path('pole_description', { 'nomPole':'Immobilier & Silver Expérience' } )}}"  id="bottom" class="detailsPole btn mx-auto">Détails</a>
+    </div>
+</div>
+
+
+</div>
+ {% block javascripts %}
+<script>
+    document.querySelectorAll('a.detailsPole').forEach(function(link){
+            link.addEventListener('mouseover', mouseOver);
+        })
+
+    var currentClass = '';
+
+    function mouseOver(e){    
+
+        var cube = document.querySelector('.cube');
+        if ( currentClass ) {
+            cube.classList.remove( currentClass );
+        }
+
+        var showClass = 'show-'+ e.target.id
+            cube.classList.add( showClass );
+            currentClass = showClass;        
+    }
+
+    
+
+    {# var cube = document.querySelector('.cube');
+    var radioGroup = document.querySelector('.radio-group');
+    var currentClass = '';
+
+function changeSide() {
+  var checkedRadio = radioGroup.querySelector(':checked');
+  var showClass = 'show-' + checkedRadio.value;
+  if ( currentClass ) {
+    cube.classList.remove( currentClass );
+  }
+  cube.classList.add( showClass );
+  currentClass = showClass;
+}
+// set initial side
+changeSide();
+
+radioGroup.addEventListener( 'change', changeSide ); #}
+</script>
+{% endblock %}  
+
+{% endblock %}
+

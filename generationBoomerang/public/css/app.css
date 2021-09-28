@@ -1,0 +1,858 @@
+body{
+    background-color: rgb(132,132,132);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-file-label::after {
+    content: "Importer" !important; }
+
+label{
+    margin-bottom: 0em!important;
+}
+
+div.container {
+    margin-top: 20px;
+}
+
+div.ad-title {
+    padding: 2em;
+    background-size: cover;
+    background-position: center center;
+}
+
+
+div.ad-title h1, div.ad-title p{
+    color: white;
+    text-shadow: 3px 3px 3px rgba(0,0,0, 0.5);
+}
+
+
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover{
+
+    color:firebrick !important;
+}
+
+span.rating i {
+    color: goldenrod;
+}
+
+
+/******************   HEADER  ******************/
+
+.navbar{
+    color:white;
+    padding-left: 0px !important;
+}
+
+.dropdown-menu a:hover{
+    background-color:rgba(60, 18, 178,0.5);
+}
+
+.dropdown-menu{
+    width:100%;
+    margin-right: 0px;
+
+}
+
+.navBackground{
+    border-radius: 22px;
+}
+
+@media (min-width:991px){
+    #collapsibleNavbar2{
+        display: none !important;
+    }
+    .dropdown-menu{
+        width:400px;
+        margin-right: 0px;
+    
+    }
+    .navBackground1{
+        background-color: rgb(244,69,6);    
+        border-bottom: solid 6px transparent;
+    }
+    
+    .navBackground1:hover{
+        background-color: rgb(32,0,122);
+        border-bottom: solid 6px rgb(244,69,6); 
+         
+    }
+    
+    .navBackground2{
+        background-color: rgb(32,0,122);
+        border-bottom: solid 6px transparent;
+    }
+    
+    .navBackground2:hover{
+        background-color: rgb(244,69,6);
+        border-bottom: solid 6px rgb(32,0,122);
+         
+    }
+    
+}
+
+@media (max-width:991px){
+    #collapsibleNavbar{
+        display: none !important;
+    }
+    .navBackground2, .navBackground1{
+        font-size: 2em;
+        padding-left: 20px;
+    }
+    .dropdown-menu{
+        width:100%;
+        margin-right: 0px;
+    
+    }
+    .navBackground1{
+        background-color: rgb(244,69,6);    
+        border-left: solid 6px transparent;
+    }
+    
+    .navBackground1:hover{
+        background-color: rgb(32,0,122);
+        border-left: solid 6px rgb(244,69,6); 
+         
+    }
+    
+    .navBackground2{
+        background-color: rgb(32,0,122);
+        border-left: solid 6px transparent;
+    }
+    
+    .navBackground2:hover{
+        background-color: rgb(244,69,6);
+        border-left: solid 6px rgb(32,0,122);         
+    }
+}
+
+.sousMenuPole{
+    font-size:2.5em;
+    padding-left: 25px;
+}
+
+.sousMenuPole:hover{
+    background-color:rgba(60, 18, 178,0.5);
+}
+
+
+/**************** Articles ***********************/
+.articleShowBackground{
+    background-color: rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+    box-shadow: 5px 10px 15px 5px rgba(0, 0, 0, .2)
+}
+
+.articleBackground{
+    background-color: rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, .2)
+}
+
+/************************* Cartes des Articles *********************/
+.card-title{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color:  white;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;    
+}
+
+.card-img-top:hover .card-title{
+    background-color: rgba(0, 0, 0, 0.65) !important;
+    color: white;
+    z-index: 2;    
+}
+
+.textcarte:hover{
+    color:white;
+    text-decoration:none;
+    font-size: 1.2em;
+}
+.textcarte{
+    color:white;
+    text-decoration:none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.card a{    
+    z-index: 3;
+}
+
+/****************** Commentaires ******************/
+.commentaireBackground{
+    background-color: rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, .2)
+}
+
+.btn-loupe{
+    background-color: rgba(68,108,178, 0.5);
+    border-radius: 2px;    
+}
+
+.articlePlaceholder ::placeholder{
+    color: rgba(255,255,255,0.8);
+}
+
+/********************** Footer **********************/
+.footerNewsletters{
+    color:white;
+    border-bottom: solid 1px rgb(244,69,6);
+    padding-bottom: 5px;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.buttonFooter a{
+    background-color: rgb(244,69,6);
+    color:white;
+}
+
+.buttonFooter a:hover{
+    background-color: rgb(60, 18, 178);
+    color:white;
+}
+
+.buttonFooter{
+    color:white;    
+}
+
+.footerBackground{
+    background-color: rgba(74,74,74);     
+}
+
+.conditionFooter{
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    font-size: 1em;
+}
+
+.conditionFooter:hover{
+    text-decoration: none;    
+    color: rgb(244,69,6);
+    
+}
+
+.textFooter p{
+    font-family: 'Rubik';
+    color:  rgb(255, 255, 255);
+    padding-top: 10px;
+}
+
+.coulorList h5{
+    color:  rgb(231, 128, 9);
+}
+
+.hrColor{    
+    border-top: solid 1px white;
+}
+
+#navHome a {
+	color: white;
+}
+#navHome {
+	background-color: rgba(0, 0, 0, 0.6);
+	height: 100px
+}
+
+body{     	
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+    min-height: 100vh;   
+}
+
+/***************** Mon Compte ****************/
+
+.boutonProfilUser{
+    border-bottom: 1px solid rgb(173, 173, 173);
+}
+
+.signLogin {
+    color: white;
+    text-decoration: none;
+}
+
+.signLogin a{
+    color: white;
+    text-decoration: none;
+}
+
+.signLogin:hover{
+    color: white;
+    text-decoration: underline;
+}
+
+.btn-outline-light{
+    border: none;
+}
+
+.boutonProfilUser{
+    color:grey;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.boutonProfilUser:hover{
+    border-left: 6px solid rgb(60, 18, 178);
+    color:black;
+    text-decoration: none;
+}
+
+.ligneBoutonProfilUser{
+    border-bottom: 1px solid rgb(173, 173, 173);
+}
+
+.titreCatAccount{
+    font-weight: bold;    
+}
+
+.titreSousCatAccount{    
+    color: rgb(202, 57, 57);
+    font-size: 1em;
+}
+
+.inputFormAccount{    
+    padding: 5px;
+    width: 6em; 
+    background-color: red;   
+}
+
+.inputFormAccountCP{    
+    padding: 5px;
+    width: 5em;  
+   
+}
+
+.inputFormAccountNUM, .inputFormAccountPN, .inputFormAccountVR,.inputFormAccountMD,.inputFormAccountNDR,.inputFormAccountCP{
+
+    background-color:rgb(245, 245, 245);
+    border: solid 1px grey;
+    border-radius: 2px;
+}
+
+.btnMonCompte{
+    background-color: rgb(60, 18, 178);
+}
+
+.inputFormAccountNUM{    
+    padding: 5px;
+    width: 3em;    
+}
+
+.monCompteFont{
+    font-family: "Roboto";
+}
+
+.inputFormAccountPN, .inputFormAccountVR{    
+    padding: 5px;
+    width: 10em;    
+}
+
+.inputFormAccountMD{    
+    padding: 5px;
+    width: 20em;    
+}
+
+.inputFormAccountNDR{    
+    padding: 5px;
+    width: 15em;
+    
+}
+
+#update_inscription_imageFile::-webkit-file-upload-button {
+    background-color: rgb(122, 180, 120);
+    padding: 5px;
+    content: "yes"
+    
+  }
+
+#file-upload-button::-webkit-file-upload-button{
+    content: "MODIFIR L'IMAGE"; 
+}
+
+/************** Background Container  ***************/
+.backgroundContainer{
+    background-color: rgb(220,220,220);
+    border-radius: 16px;
+    
+}
+
+.inputLogin input{
+    background-color:white; 
+    border: none;
+    border-radius:0px 19px 19px 0px;
+    border-left: solid 2px black;  
+}
+
+.inputLogin{
+    box-shadow: 4px 4px 10px rgb(0,0,0,0.4);
+}
+
+@media (min-width:1000px){
+    .myContainer{
+        width:1000px;
+    }
+}
+@media (max-width:1000px){
+    .myContainer{
+        width:100%;
+    }
+}
+
+
+
+/************** Formulaire login ***************/
+.formulaireLogin h3{
+    font-size: 1.6em;
+}
+
+/* .loginhrColor{
+    border-top: solid 2px black;
+}*/
+
+.buttonConnectionLogin button{
+    background-color: rgb(244,69,6);
+    border-radius: 19px;
+    border-color: grey;
+    font-size: 1.6em;
+}
+
+.buttonFooter button{
+    background-color: rgb(244,69,6);
+    color:white;
+}
+
+.buttonFooter button:hover{
+    background-color: rgb(60, 18, 178);
+    color:white;
+}
+
+.buttonConnectionLogin button:hover{
+    background-color: rgb(60, 18, 178);
+    color:white;
+}
+
+.inscrivezVousLogin a{    
+    font-size: 1.2em;
+}
+/**************  Newsletter  ***************/
+
+div#triangle {
+    width:0px; height:0;
+    line-height:0;
+    border-top:100px solid white;
+    border-right:100px solid #20007A;
+    border-bottom:100px solid white;
+    border-left:0px solid white;
+    }
+div#rectangle{
+    background-color: #20007A;
+    width: 500px;
+    }
+
+.buttonNewsletter .btn{
+    background-color: rgb(244,69,6);
+    border-radius: 8px;
+    border-color: grey;
+    color:white;
+    }
+    
+.buttonNewsletter .btn:hover{
+    background-color: white;
+    border-color: rgb(244,69,6);
+    color: rgb(244,69,6)
+    }
+
+.CardNewsletter{
+    
+    height: 200px;
+    border-radius: 22px;
+    background-color:white;
+    font-size: 1em;
+}
+
+
+/**************** Communs à tous les formulaires *****************/
+.backgroundContainer h4{
+    font-size:1em;
+}
+
+.backgroundContainer input, .select2-selection{
+    box-shadow: 2px 2px 2px rgb(190,190,190);
+}
+
+/************** New publication form ***************/
+
+.backgroundContainerNewPub{
+    background-color: rgb(220,220,220);
+}
+
+.buttonCreatePub .btn{
+    background-color: rgb(244,69,6);
+    border-radius: 8px;
+    border-color: grey;
+    color:white;
+}
+
+.buttonCreatePub .btn:hover{
+    background-color: white;
+    border-color: rgb(244,69,6);
+    color: rgb(244,69,6)
+}
+
+.buttonCreatePub .bouttonPublier{
+    background-color: rgb(40, 129, 52);
+    border-radius: 8px;
+    border-color: grey;
+    color:white;
+}
+
+.buttonCreatePub .bouttonPublier:hover{
+    background-color: white;
+    border-color: rgb(40, 129, 52);
+    color: rgb(40, 129, 52)
+}
+
+
+
+input[id^='articles'], textarea[id^='articles'], select[id='pole']{
+
+    box-shadow: 2px 2px 2px rgb(190,190,190);
+}
+
+input[type=file]::-webkit-file-upload-button{
+    visibility:hidden
+}
+
+
+input[type=file]::before{
+    
+    content:"Importer";
+    text-align: center;
+    padding-top:15px;
+    padding-bottom: 15px;
+    vertical-align: middle;
+    background-color: rgb(244,69,6);
+    color:white;
+}
+
+.inputFormArticle input[type=file]::before{
+  display:none;
+}
+
+
+
+input[type=reset]:focus{
+    content:"Reset";
+}
+
+input[type=file]:focus{
+    outline: none;
+}
+
+#articles_video::placeholder{
+    font-style: italic;
+}
+/**************  Affiche tous les Articles**************/
+article {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    padding: 20px;
+  }
+  
+  article:after {
+    position: absolute;
+    bottom: 0;  
+    height: 100%;
+    width: 100%;
+    content: "";
+    background: linear-gradient(to top,
+       rgba(255,255,255, 1) 20%, 
+       rgba(255,255,255, 0) 80%
+    );
+    pointer-events: none; /* so the text is still selectable */
+  }
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    
+    perspective: 1000px; 
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+  }
+  
+  
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  
+  .flip-card-back {
+    background-color: rgb(91,91,91);
+    color: Black;
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-back a{
+      color:white;
+  }
+
+   .flip-card-back a:hover{
+    color:black;
+    }       
+
+.inputRechercheArticle input{
+    font-size: 1.2em;
+    border:none;
+    background-color:White; 
+    border-radius:20px 0px 0px 20px;
+    height: 50px; 
+    width: 500px;
+    color: rgb(87,87,87);
+    font-weight: bold;
+    border: solid 1px black;
+    box-shadow: 5px 5px 5px rgb(87,87,87); 
+    
+}
+
+.inputRechercheArticle button{
+    background-color:rgb(234,234,234);
+    border-radius:0px 20px 20px 0px;; 
+    height: 50px;
+    border:none;
+    border: solid 1px black;
+    box-shadow: 5px 5px 5px rgb(87,87,87)
+}
+
+.inputRechercheArticle i{
+    color:rgb(65,105,205)
+}
+
+.trierArticles select{
+    color:black;
+    background-color: white;
+    font-weight:bold;
+    width: 150px;
+}
+
+.trierArticles option{
+    color:black;
+    
+}
+
+/*********** Descroiption des poles ***********/
+.buttonPole1 .btn{
+    background-color: rgb(247,242,123);
+    border: solid 4px  rgb(184, 177, 49);
+}
+.buttonPole1 .btn:hover{
+    background-color: rgb(184, 177, 49);
+    border: solid 4px  rgb(247,242,123);
+    color:white;
+    
+}
+.buttonPole2 .btn{
+    background-color: rgb(135,179,214);
+    border: solid 4px rgb(33,114,179);
+}
+.buttonPole2 .btn:hover{
+    background-color: rgb(33,114,179);
+    border: solid 4px rgb(135,179,214);
+    color:white;
+    
+}
+.buttonPole3 .btn{
+    background-color: rgb(241,136,138);
+    border: solid 4px rgb(229,36,39);
+}
+.buttonPole3 .btn:hover{
+    background-color: rgb(229,36,39);
+    border: solid 4px rgb(241,136,138);
+    color:white;
+    
+}
+.buttonPole4 .btn{
+    background-color: rgb(245,170,136);
+    border: solid 4px rgb(236,98,36);
+}
+.buttonPole4 .btn:hover{
+    background-color: rgb(236,98,36);
+    border: solid 4px rgb(245,170,136);
+    color:white;
+    
+}
+
+.buttonPole5 .btn{
+    background-color: rgb(177,174,193);
+    border: solid 4px rgb(110,56,140);
+    
+}
+.buttonPole5 .btn:hover{
+    background-color: rgb(110,56,140);
+    border: solid 4px rgb(177,174,193);
+    color:white;
+    
+}
+
+.buttonPole6 .btn{
+    background-color: rgb(122,195,167);
+    border: solid 4px rgb(10,144,93);
+    
+}
+.buttonPole6  .btn:hover{
+    background-color: rgb(10,144,93);
+    border: solid 4px rgb(122,195,167);
+    color:white;
+    
+}
+
+/* Le cube de présentation des poles */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.scene {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #CCC;
+  margin: 80px;
+  perspective: 400px;
+}
+
+.cube {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: translateZ(-100px);
+  transition: transform 1s;
+}
+
+.cube.show-front  { transform: translateZ(-100px) rotateY(   0deg); }
+.cube.show-right  { transform: translateZ(-100px) rotateY( -90deg); }
+.cube.show-back   { transform: translateZ(-100px) rotateY(-180deg); }
+.cube.show-left   { transform: translateZ(-100px) rotateY(  90deg); }
+.cube.show-top    { transform: translateZ(-100px) rotateX( -90deg); }
+.cube.show-bottom { transform: translateZ(-100px) rotateX(  90deg); }
+
+.cube__face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  line-height: 200px;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.cube__face--front  {
+    background-color: rgba(247,242,123,0.9);
+    border: double  8px  rgb(184, 177, 49); 
+    border-radius: 0px;
+    color: black;}
+.cube__face--right  { 
+    background-color: rgb(241,136,138,0.9);
+    border: double  8px rgb(229,36,39);
+    border-radius: 0px;
+    color: black; }
+.cube__face--back   { 
+    background-color: rgb(135,179,214,0.9);
+    border: double  8px rgb(33,114,179);
+    border-radius: 0px;
+    color: black; }
+.cube__face--left   { 
+    background-color: rgb(245,170,136,0.9);
+    border: double  8px rgb(236,98,36);
+    border-radius: 0px;
+    color: black; }
+.cube__face--top    { 
+    background-color: rgb(177,174,193,0.9);
+    border: double  8px rgb(110,56,140);
+    border-radius: 0px;
+    color: black; }
+.cube__face--bottom { 
+    background-color: rgb(122,195,167,0.9);
+    border: double  8px rgb(10,144,93);
+    border-radius: 0px;
+    color: black; }
+
+.cube__face--front  { transform: rotateY(  0deg) translateZ(100px); }
+.cube__face--right  { transform: rotateY( 90deg) translateZ(100px); }
+.cube__face--back   { transform: rotateY(180deg) translateZ(100px); }
+.cube__face--left   { transform: rotateY(-90deg) translateZ(100px); }
+.cube__face--top    { transform: rotateX( 90deg) translateZ(100px); }
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+label { margin-right: 10px; }
+
+
+.fontUserCard a{
+    font-size:0.8em;
+}
+
+.buttonAnnonceVisMaVie a{
+    background-color: rgb(32,0,122);
+    color:white;
+    border-radius:5px;
+}
+
+.buttonAnnonceVisMaVie a:hover{
+    background-color:  rgb(244,69,6); 
+    color:white;
+    text-decoration: none;
+    border-radius:5px;
+}
+
+#custCarousel{
+    float: left !important;
+    width: 45% !important;
+}
+
+@media (max-width:992px){
+    p  img{
+        width: 100% !important
+    }
+}

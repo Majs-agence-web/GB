@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+        
+    <link rel="stylesheet" href="/css/homePage.css">
+     <video class="" poster="public\img\logonav.png" id="bgvid" playsinline autoplay muted loop style="background-color:black;">
+        <source src="\video\Composition1.webm" type="video/webm">
+        <source src="\video\Composition1.mp4" type="video/mp4">
+        <source src="\video\Composition1.ogv" type="video/ogv">
+    </video>
+    <div class="tailleBackground container-fluid mt-5 d-flex flex-column mb-5">   
+
+        {# <div>
+            <h1 class="ml-5" style="color:white;">L'expérience du futur</h1>
+        </div> #}
+        <div class="content boutonVideo">
+            <button class="ml-5 " id="myBtn" onclick="myFunction()">PAUSE VIDÉO</button>
+        </div>
+        <div class="container my-auto mx-auto d-flex flex-column mt-5 pt-5">
+        
+            <form action="{{path('articles_publications_index')}}" method="POST" class="text-center">
+                <div class="d-flex  justify-content-center inputRechercheArticle">
+                    <img src="{{ asset ('/img/icones/boomerangblanc.png')}}" alt="boomerang blanc" style="width:3.5em;height:3.5em;" class="mt-5">
+                    <div class="my-auto d-flex">
+                        <input class="my-auto pl-3" placeholder="Rechercher..." name="keyWord">
+                    </div>
+                    <div class="my-auto d-flex">
+                        <button class="btn-loupe my-auto" type="submit"><i class="fas fa-search fa-2x"></i></button>
+                    </div>
+                    <img src="{{ asset ('/img/icones/boomerangblanc2.png')}}" alt="boomerang blanc" style="width:3.5em;height:3.5em;" class="mb-5">
+                </div>
+
+                <div class="mx-auto">
+                    <div class="mt-5">
+                        <button type="button " class="btn btn-warning btn-sm keyword homeButton" name="keyWord" value="Design">Design</button>
+                        <button type="button " class="btn btn-warning btn-sm keyword homeButton" name="keyWord" value="Immobilier">Immobilier</button>
+                        <button type="button " class="btn btn-primary btn-sm keyword homeButton" name="keyWord" value="Technologie">Technologie</button>
+                        <button type="button " class="btn btn-danger btn-sm keyword homeButton" name="keyWord" value="Management">Management</button>
+                    </div>
+                    <div class="mt-2 ml-5">
+                        <button type="button " class="btn btn-danger btn-sm keyword homeButton" name="keyWord" value="Construction">Construction</button>
+                        <button type="button " class="btn btn-warning btn-sm keyword homeButton" name="keyWord" value="Art">Art</button>
+                        <button type="button " class="btn btn-warning btn-sm keyword homeButton" name="keyWord" value="Culture">Culture</button>
+                        <button type="button " class="btn btn-success btn-sm keyword homeButton" name="keyWord" value="Environnement">Environnement</button>
+                    </div>
+                    <div class="mt-2 ml-2">
+                        <button type="button " class="btn btn-primary btn-sm keyword homeButton" name="keyWord" value="3D">3D</button>
+                        <button type="button " class="btn btn-success btn-sm keyword homeButton" name="keyWord" value="Economie">Economie</button>
+                        <button type="button " class="btn btn-warning btn-sm keyword homeButton" name="keyWord" value="Ingénieurie">Ingénieurie</button>
+                        <button type="button " class="btn btn-primary btn-sm keyword homeButton" name="keyWord" value="Connecté">Connecté</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+<script>
+// Get the video
+var video = document.getElementById("bgvid");
+
+// Get the button
+var btn = document.getElementById("myBtn");
+
+// Pause and play the video, and change the button text
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    btn.innerHTML = "PAUSE VIDÉO";
+  } else {
+    video.pause();
+    btn.innerHTML = "LECTURE VIDÉO";
+  }
+}
+</script>
+{% endblock %}
+   
+
+ 

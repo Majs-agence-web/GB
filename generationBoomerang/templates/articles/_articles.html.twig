@@ -1,0 +1,146 @@
+{% if article.pole  != NULL %}
+    {% set url = path('articles_pole_show', {'slug': article.slug}) %}
+{% else %}
+    {% set url = path('articles_publications_show', {'slug': article.slug}) %}
+{% endif %}
+
+
+<div class=" p-2" >
+
+{# Image + titre + auteur #}
+            <div class="flip-card" style=" width: 100%;">
+                <div class="flip-card-inner d-flex">
+                    <div class="flip-card-front d-flex" style="overflow:hidden;background-color:black;">
+                    {% for image in article.images %}
+                        <img class="mx-auto my-auto" src="{{ vich_uploader_asset(article.images[0], 'imageFile')}}" alt="image d'illustration" style="position:relative; width:100%;">
+                    {% endfor %}         
+                    </div>                       
+                    <div class="flip-card-back">
+                        <div class="card-title d-flex justify-content-center" >                        
+                            <a href="{{ url }}" class="p-2 d-flex align-items-center text-center textcarte" style="">{{article.titreArticle|raw}}</br>-</br>                    
+                            {{article.author.firstName}} {{article.author.lastname }}</a>                      
+                        </div>
+                    </div>  
+                </div>                  
+            </div>  
+
+{# Icone + dénomination pôle #}
+{% if article.pole  != NULL %}
+            {# <div class="d-flex pt-2 pl-2 pr-2" style="background-color:white; height:38px;">    #}
+            <div class="d-flex pt-2 pl-2 pr-2" style="background-color:white; height:50px;">                
+                    <img src="
+                    
+                        {% if article.pole.nomPole == "Innovation" %}
+                        {{ asset ('/img/iconePole/iconeAmpoule.png')}}                        
+                        {% elseif article.pole.nomPole == "Communication Recherche et développement" %}
+                        {{ asset ('/img/iconePole/iconeCommu.png')}}                        
+                        {% elseif article.pole.nomPole == "Evolution des savoirs" %}
+                        {{ asset ('/img/iconePole/iconeEvoS.png')}}                        
+                        {% elseif article.pole.nomPole == "Evolution des métiers" %}
+                        {{ asset ('/img/iconePole/iconeEvoM.png')}}                        
+                        {% elseif article.pole.nomPole == "Immobilier & Silver Expérience" %}
+                        {{ asset ('/img/iconePole/iconeImmo.png')}}                        
+                        {% elseif article.pole.nomPole == "Universal design & inclusive design" %}
+                        {{ asset ('/img/iconePole/iconeUniDes.png')}}
+                        {% endif %}
+                     
+                    " alt="iconePole logo" class="align-self-start pt-1 pl-1" style="width:12%; float:left;">                    
+                    {# <a class="font-weight-bold mx-auto my-auto text-center" style="font-size:0.9em;">{{article.pole.nomPole}}</a>  #}
+                    <a class="font-weight-bold mx-auto my-auto text-center" style="font-size:0.9em;">{{article.titreArticle}}</a>    
+
+            </div>
+{% else %}  
+              <div class="d-flex pt-2 pl-2 pr-2" style="background-color:white; height:38px;">                
+                                     
+                    <a class="font-weight-bold mx-auto my-auto text-center" style="font-size:0.9em;">{{article.titreArticle}}</a>    
+
+            </div>
+{% endif %}
+            
+{# Affichage Like et View #}
+
+            <div class="d-flex flex-column pl-3 pr-3 pt-3 pb-1" style="background-color:white;">
+               <div class="d-flex   justify-content-between" >
+                    <div class="align-self-start">
+                        <i class="far fa-eye pr-2  my-auto" style="color:green"></i><a class="my-auto" id="{{article.id}}">&nbsp;</a>&nbsp;<a> fois</a>
+                    </div>                                      
+                    <div class="align-self-end">
+                        <i class="fas fa-thumbs-up my-auto" style="color:blue"></i><a class="pl-2 my-auto">{{article.likers | length}}</a>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between" style="font-size:0.8em;">
+                    <div class="p-1 align-self-start" style="font-size:0.8em;">
+                        <a>Créée le</a>
+                        {{article.createdAt|date('d/m/Y')}}
+                    </div> 
+                    <div class="p-1 align-self-end" style="font-size:0.8em;">
+                        {{article.commentaires | length }}                    
+                       <a>commentaire(s)</a>     
+                    </div> 
+                </div> 
+            </div>
+             {% if app.user and app.user.roles[0] == "ROLE_ADMIN" %} 
+                <div class="self-align-center">
+                    <a type="submit"class="btn btn-warning btn-sm" href="{{ path('articles_pole_edit', {'slug':article.slug}) }}">Editer</a>
+                    <a type="submit"class="btn btn-danger btn-sm" href="{{ path('articles_pole_delete', {'slug':article.slug}) }}">Supprimer</a>
+                </div>
+                {% else %}      
+                    {% if app.user and app.user == article.author %}
+                                
+                        {% if article.pole  != NULL %}
+                        <div class="self-align-center">
+                            <a type="submit"class="btn btn-warning btn-sm" href="{{ path('articles_pole_edit', {'slug':article.slug}) }}">Editer</a>
+                            <a type="submit"class="btn btn-danger btn-sm" href="{{ path('articles_pole_delete', {'slug':article.slug}) }}">Supprimer</a>
+                        </div>
+                        {% else %}
+                        <div class="self-align-center">
+                            <a type="submit"class="btn btn-warning btn-sm" href="{{ path('articles_publications_edit', {'slug':article.slug}) }}">Editer</a>
+                            <a type="submit"class="btn btn-danger btn-sm" href="{{ path('articles_publications_delete', {'slug':article.slug}) }}">Supprimer</a>
+                        </div>
+                        {% endif %}
+                    {% endif %}
+            {% endif %}        
+                           
+</div>
+
+
+{# <div class="row col-4 ml-1" >
+        <div class="col-12 articleBackground m-2 p-0" >
+                <div class="card bg-light">
+                    <div class="card-img-top card-bg d-flex" style="height: auto; height:250px; overflow:hidden" >
+                        {% for article in articles %}
+                            {% for image in article.images %}
+                            
+                                <img class="my-auto" src="{{ vich_uploader_asset(image, 'imageFile')}}" alt="image d'illustration" style="width: 100%;">
+                            {% endfor %}
+                        {% endfor %}
+                        
+                        <div class="card-title d-flex justify-content-center" >                        
+                            <a href="{{ url }}" class="d-flex align-items-center text-center textcarte" style=" ">{{article.titreArticle}}</br>-</br>                    
+                            {{article.author.firstName}} {{article.author.lastname }}</a>                      
+                        </div>
+                    </div> 
+
+                    
+
+                    <div class="row d-flex justify-content-center pl-3">
+                        <div class="col-5 d-flex align-items-center text-center">
+                            <i class="fas fa-thumbs-up" style="color:blue"></i><a class="btn">{{article.likers | length}}</a>
+                        </div> 
+                        <div class="col-2 "></div>
+                        <div class="col-5 d-flex align-items-center text-center">
+                            <i class="far fa-eye pl-2 pr-1" style="color:green"></i><a id="{{article.id}}">&nbsp;</a>&nbsp;<a> fois</a>
+                        </div>
+                    </div>    
+                </div>
+                          
+        </div>
+       
+    </div> #}
+            
+
+<script>         
+    affichageCompteur({{article.id}});                     
+</script>
+
+   

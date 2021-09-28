@@ -1,0 +1,83 @@
+
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+        <div class="container">
+                <h3 class="monCompteFont mb-0">INFORMATIONS PERSONNELLES</h3>
+                <small>Gérer votre nom et vos coordonnées. Ces informations personnelles sont privées et ne seront pas visibles par les autres utilisateurs.
+                Consultez notre <a href="">politique de confidentialité</a></small>
+                {{form_start(form)}}
+                        <div class="row mt-3" onchange="showPreview(event)">
+                                <div class="col-5">
+                                <div class="preview p-3" style="text-align:center;">
+                                        <img id="file-ip-1-preview"  class="mx-auto my-auto" src="{{ vich_uploader_asset(app.user, 'imageFile') }}" style="text-align:center;width:50%;height:auto;">
+                                </div>
+                                        <div class="my-auto">{{ form_widget(form.imageFile,  {'attr': {'id':'file-ip-1','label': 'Modifier photo' }}) }}</div>
+                                </div>
+                                <div class="col">
+                                        <div class="form-group d-flex flex-column">
+                                                {{ form_label(form.lastName, 'Nom') }}
+                                                {{ form_widget(form.lastName, {'attr': {'class': 'inputFormAccountPN form-control'}}) }}
+                                        </div>
+                                        <div class="form-group d-flex flex-column">
+                                                {{ form_label(form.firstName, 'Prénom') }}
+                                                {{ form_widget(form.firstName, {'attr': {'class': 'inputFormAccountPN form-control' }}) }}
+                                        </div>
+                                        <div class="form-group">
+                                                {{ form_label(form.email, 'Email') }}
+                                                {{ form_widget(form.email, {'attr': {'class': 'inputFormAccountMD form-control' }}) }}
+                                        </div>
+                                </div>
+                        </div>
+                {# <div class="row mt-3 ">
+                        <a class="titreCatAccount col-6">DESCRIPTION</a>
+                        <div class="col-12">{{ form_widget(form.description, {'attr': {'class': 'inputFormAccountMD' }}) }}</div>
+                </div>
+                <hr> #}
+                        <h5 class="monCompteFont" style="font-style:italic">ADRESSE</h5>
+                        <div class="form-row form-group">
+                                <div class="col"
+                                        {{ form_label(form.Adresse.numeroRue) }}
+                                        {{ form_widget(form.Adresse.numeroRue, {'attr': {'class': 'inputFormAccountNUM form-control' }}) }}
+                                </div>
+                                <div class="col">
+                                        {{ form_label(form.Adresse.nomRue) }}
+                                        {{ form_widget(form.Adresse.nomRue, {'attr': {'class': 'inputFormAccountNDR form-control' }}) }}
+                                </div>
+                        </div>
+                        <div class="form-row form-group">
+                                <div class="col"
+                                        {{ form_label(form.Adresse.codePostal, 'Code Postal') }}
+                                        {{ form_widget(form.Adresse.codePostal, {'attr': {'class': 'inputFormAccountCP form-control' }}) }}
+                                </div>
+                                <div class="col">
+                                        {{ form_label(form.Adresse.ville, 'Ville') }}
+                                        {{ form_widget(form.Adresse.ville, {'attr': {'class': 'inputFormAccountVR form-control' }}) }}
+                                </div>
+                        </div>
+
+                        {{ form_label(form.Adresse.region, 'Région') }}
+                        {{ form_widget(form.Adresse.region, {'attr': {'class': 'inputFormAccountVR form-control' }}) }}
+                        
+                        <div class="my-3 buttonCreatePub"> 
+                                <button type="submit" class="btn">{{ button_label|default('Sauvegarder les modifications') }}</button>
+                        </div>
+                {{form_end(form)}}
+        </div>
+
+
+{% endblock %}
+{% block javascripts %}
+<script>
+function showPreview(event){
+    if(event.target.files.length > 0){
+        var src = URL.createObjectURL(event.target.files[0]);
+        var preview = document.getElementById("file-ip-1-preview");
+        preview.src = src;
+        preview.style.display = "block";
+    }
+    }
+</script>
+{% endblock %}

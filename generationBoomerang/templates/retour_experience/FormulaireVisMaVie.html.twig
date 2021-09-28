@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+ <div class="container">
+        <div class="row md-6">
+            <div class="col">
+                <h1 class="text-center">Poser une annonce pour vis ma vie</h1>
+
+                {{form_start(form)}}
+                <div class="my-3">
+                    {{form_row(form.nomEntreprise, {'label':'Nom de l\'entreprise','attr': {'placeholder': 'Veuillez entrer le nom de l\'entreprise', 'class':"form-control"}})}}
+                </div>
+                <div class="my-3">    
+                    {{form_row(form.villeEntreprise, {'label':'Ville où se trouve l\'entreprise','attr': {'placeholder': 'Veuillez entrer la ville', 'class':"form-control"}})}}
+                </div>
+                <div class="my-3">    
+                    {{form_row(form.description, {'label':'description de l\'annonce','attr': {'placeholder': 'Veuillez décrire l\'experience que vous proposer','rows' : '10','class':"form-control"}})}}
+                </div>
+                <div class="my-3">    
+                    {{form_row(form.dateDebut, {'label':'date de début du stage','attr': {'class':"form-control"}})}}
+                </div>
+                <div class="my-3">    
+                    {{form_row(form.DateFin, {'label':'date de fin du stage','attr': {'class':"form-control"}})}}
+                </div>
+                <div class="my-3">    
+                    {{form_row(form.User, {'label':'identité de l\'utilisateur','attr': {'placeholder': 'l\'identité ', 'class':"form-control"}})}}
+                </div>   
+                
+{# ----------  FONCTION  -------------- #}            
+            <label for="">Fonction</label> 
+                        
+            <a  data-toggle="collapse" href="#collapseMetier" role="button" aria-expanded="false" aria-controls="collapseMetier"><i class="far fa-caret-square-down" style="color:black;"></i></a> 
+            <div class="collapse" id="collapseMetier">
+                    <div class="accordion" id="accordionExample">
+                        {% for fonctionMetier in fonctionMetiers %} 
+                            {% set dataTarget = '#datos' ~ fonctionMetier.id %}
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target={{dataTarget}} aria-expanded="true" aria-controls="collapseOne">
+                                            {{fonctionMetier.nomFonction}}
+                                        </button>
+                                    </h2>
+                                </div>
+                                {% set ID = 'datos' ~ fonctionMetier.id %}
+                                <div id={{ID}} class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="accordion" id="accordion">
+                                            {% for metier in fonctionMetier.metier  %}
+                                                <div class="card">
+                                                    <div class="card-header" id="headingTwo">
+                                                        <h6 class="mb-0">
+                                                            {% set idCheck3 = 'grid' ~ metier.id %}
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" id={{idCheck3}} name="formationValue3" data-toggle="collapse" value="" data-target="#collapseMetier">
+                                                                <label class="form-check-label" for={{idCheck3}}>{{metier.nomMetier}}</label>
+                                                            </div>             
+                                                        </h6>
+                                                    </div>    
+                                                </div>    
+                                            {% endfor %}  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        {% endfor %}    
+                    </div>
+            </div>
+            <input class="form-control" name="formationValue3" value="" type="text "id="formationValue3">
+
+
+                <div class="d-flex justify-content-end my-3 buttonFooter">
+                    <button type="submit" class="btn btn-success">Confirmez votre offre</button>
+                </div>
+                {{form_end(form)}}
+
+            </div>
+        </div>
+</div>                    
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        {# $(function() {
+            $('#chkveg').multiselect({
+
+            includeSelectAllOption: true
+        }); #}
+
+        {# $('#btnget').click(function() {
+            alert($('#chkveg').val());
+
+            })
+        }); #}
+
+        function onClickCheckbox(event)
+        {
+            test=this.getAttribute('name')
+            
+            document.getElementById(test).value = this.labels[0].innerText
+
+        }
+        function checkboxPromo(event)
+        {
+            
+        }
+
+       document.querySelectorAll('input.form-check-input').forEach(function(link){
+            link.addEventListener('click', onClickCheckbox);
+        })
+    </script>
+{% endblock %}

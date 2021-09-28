@@ -1,0 +1,297 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{# {% block stylesheets %}
+    <link rel="stylesheet" href="/css/croppie.css">   
+    <link rel="stylesheet" href="/css/photoResize.css">   
+{% endblock %} #}
+
+{% block body %}
+
+<div class="myContainer mx-auto backgroundContainer mt-4 mb-4 pt-5 " >
+    
+    <div class="col-12 formulaireSignin">
+        <div class="d-flex">
+            <img src="{{ asset('/img/logoGBnoir.png') }}" alt="generationBoomerang logo" class="logoHeader pt-1 mx-auto">
+        </div>
+        <h3 class="h3 mb-3 mt-3 text-center pt-4 pb-4">FORMULAIRE D'INSCRIPTION</h3>
+            <h3 class="h3 mb-3 mt-3 font-weight-bold font-italic pl-5">INFORMATIONS PERSONNELLES</h3>
+        <hr class="loginhrColor"> 
+        <div class="d-flex ">
+            <h4 class="text-justify pl-5 pr-5 font-weight-normal">Enregistrez  votre nom et vos coordonnées. Ces informations personnelles sont privées et ne seront pas visibles par les autres utilisateurs. Consultez notre 
+                <a  target="_blank" href="/docs/Charte ABS-GB.pdf">Politique de confidentialité.</a> 
+            </h4>
+        </div>
+    </div> 
+
+    <div class="row">
+        <div class="col">
+
+            {{ form_start(form)}}      
+                {# Avatar + Nom + Prénom + adresse mail #}                
+                <div class="p-3 flex-column pl-5 pr-5">
+                    <div class="mx-auto">
+                        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto my-3 ">                            
+                            {{form_row(form.civilite)}}
+                        </div>   
+                        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">                            
+                            {{form_row(form.lastName, {'label':'Nom','attr': {'placeholder': 'Votre nom ...', 'class':"form-control",'minlength':'2','maxlength':'50'}})}}
+                        </div>   
+
+                        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto my-3 ">
+                            {{form_row(form.firstName, {'label':'Prénom','attr': {'placeholder': 'Votre prénom ...','class':"form-control",'minlength':'2','maxlength':'50'}})}}
+                        </div>  
+
+                        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto my-3 ">                            
+                            {{form_row(form.birthdate)}}
+                        </div>  
+
+                        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+                            {{form_row(form.email, {'label':'Email','attr': {'placeholder': 'Votre adresse email', 'class':"form-control", 'size':"10"}})}}
+                        </div>
+
+                        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto my-3">
+                            {{form_row(form.telephone, {'label':'Numéro de téléphone','attr': {'placeholder': 'Votre numéro de téléphone', 'class':"form-control", 'size':"10"}})}}
+                        </div>
+
+                        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto p-2" >                    
+                            <div class="d-flex flex-column">
+                                <h4 class="mx-auto text-underline">Choisissez votre Avatar</h4>
+                                <div class="mx-auto" style="width:350px;" onchange="showPreview(event)" style="width:50%;height:auto;">
+                                    <div class="preview">
+                                        <img id="file-ip-1-preview" style="width:50%;height:auto;margin:auto;">
+                                    </div>
+                                    {{form_row(form.imageFile, {'label':'Votre avatar','attr': {'id':'file-ip-1','lang':'fr','placeholder': 'Image','label':'teste', 'class':"form-control"}})}}
+                                    <small style="font-style: italic;">( Photo au format .jpg, .jpeg, .png (poids maximum 10mo / photo) )</small>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        {# <div class="col-lg-8 col-md-10 col-sm-12 mx-auto p-2">
+                            <label class="cabinet center-block  ">
+                                <figure class="d-flex flex-column">
+                                    <img src="" class="gambar img-responsive  mx-auto" id="item-img-output"  />
+                                    <figcaption><i class="fa fa-camera"></i></figcaption>
+                                </figure>
+                                {{form_row(form.imageFile, {'attr': {'class':"form-control item-img file center-block"}})}}
+                            </label>
+                        </div>
+                        <div class="modal fade" id="cropImagePop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel"><?=multiLanguage( "Edit Foto" , "Edit Photo" )?></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="upload-demo" class="center-block"></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" id="cropImageBtn" class="btn btn-primary">Crop</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> #}
+                            
+                        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+                            {{form_label(form.password, 'Mot de passe') }}
+                            <div class="input-group" id="show_hide_password">
+                                {# <input class="form-control" type="password"> #}
+                                
+                                {{form_widget(form.password, {'attr': {'placeholder': 'Veuillez choisir un mot de passe robuste', 'class':"form-control", 'size':"30"}})}}
+                                <div class="input-group-addon border p-1" style="box-shadow: 2px 2px 2px rgb(190,190,190);">
+                                    <a href="" class="my-auto"><i class="fa fa-eye-slash" aria-hidden="true" style="color:black"></i></a>
+                                </div>
+                            </div>
+                            
+                        </div> 
+                        <small id="passwordHelpBlock" class="form-text text-muted col-lg-8 col-md-10 col-sm-12 mx-auto">
+                            Votre mot de passe doit être entre 8 et 24 caractères et doit comporter une majuscule, une minuscule, un chiffre et un caractère spécial.
+                        </small>                       
+                        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+                            {{form_label(form.passwordConfirm, 'Confirmation du mot de passe') }}
+                            <div class="input-group" id="show_hide_password_confirm">
+                                {# <input class="form-control" type="password"> #}
+                                
+                                {{form_widget(form.passwordConfirm, {'attr': {'placeholder': 'Veuillez retaper votre mot de passe...', 'class':"form-control", 'size':"30"}})}}
+                                <div class="input-group-addon border p-1" style="box-shadow: 2px 2px 2px rgb(190,190,190);">
+                                    <a href="" class="my-auto"><i class="fa fa-eye-slash" aria-hidden="true" style="color:black"></i></a>
+                                </div>
+                            </div>
+                            
+                        </div>                   
+                        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+                            {{form_row(form.description, {'label':'Introduction','attr': {'placeholder': 'Présentez vous en quelques mots ...','rows': '5','class':"form-control"}})}}
+                        </div> 
+                        
+                        {# Adresse #}
+                        <div class="p-3 flex-column pl-5 pr-5">
+                            <h3 class="text-left font-italic">ADRESSE</h3>
+                            <div class="row mx-auto">
+                                <div class="col-3">
+                                {{form_row(form.Adresse.numeroRue, {'label':'N° ','attr': {'placeholder': 'Saisir n°...', 'class':"form-control", 'size':"10"}})}}
+                                </div>
+                                <div class="col-9">
+                                {{form_row(form.Adresse.nomRue, {'label':'Nom de la rue','attr': {'placeholder': 'Saisir nom de rue...', 'class':"form-control", 'size':"40"}})}}
+                                </div>
+                            </div>   
+                            <div class="row mx-auto">
+                                <div class="col-3">
+                                {{form_row(form.Adresse.codePostal, {'label':'Code postal ','attr': {'placeholder': 'Saisir code postal...', 'class':"form-control", 'size':"10", 'min':'5'}})}}
+                                </div>
+                                <div class="col-9">
+                                {{form_row(form.Adresse.ville, {'label':'Ville','attr': {'placeholder': 'Saisir votre ville...', 'class':"form-control", 'size':"40"}})}}
+                                </div>
+                            </div>  
+                            <div class="row mx-auto">
+                                <div class="col-12">
+                                {{form_row(form.Adresse.region, {'label':'Région ','attr': {'placeholder': 'Saisir région...', 'class':"form-control", 'size':"40"}})}}
+                                </div>       
+                            </div>
+                        </div>
+                        {# Séparation #}
+
+
+                                <hr class="loginhrColor"> 
+                            <div class="form-group col-6">
+                                <label for="sel1">Status</label>
+                                <select class="form-control" id="sel1" onchange="selectStatus(event)")>
+                                    <option>Selectionnez un status</option>
+                                    <option>Salarié</option>
+                                    <option>Profession libérale</option>
+                                    <option>Entrepreneur</option>
+                                    <option>Retraite</option>
+                                    <option>Chômage</option>
+                                    <option>Etudiant</option>
+                                </select>
+                            </div>
+                {# Entreprise #}
+                            <div class="collapse" id="Entrepreneur">
+                    {# Nom + activité #}
+                                <div class="p-3 flex-column pl-5 pr-5">
+                                    <h3 class="text-left font-weight-bold font-italic">ENTREPRISE</h3>
+                                    <div class="d-flex ">
+                                        <h4 class="text-left pb-4 font-weight-normal">Gérer les informations sur votre entreprise utilisées pour les annonces vis ma vie.</h4>
+                                    </div>
+                                    <div class="row mx-auto">
+                                        <div class="col-6">  
+                                            {{form_row(form.Entreprise.nom, {'label':'Nom de l\'entreprise','attr': {'placeholder': 'Saisir nom de l\'entreprise ...', 'class':"form-control"}})}}                        
+                                        </div>                    
+                                        <div class="col-6">  
+                                            {{form_row(form.Entreprise.activite, {'label':'Activité principale','attr': {'placeholder': 'Saisir l\'activité principale ...', 'class':"form-control"}})}}                        
+                                        </div>                     
+                                    </div>
+                                </div>
+                    {# Adresse #}
+                                <div class="flex-column pl-5 pr-5">
+                                    <h5 class="text-left font-italic">ADRESSE DE L'ENTREPRISE</h5>
+                                    <div class="row">
+                                        <div class="col-3">
+                                        {{form_row(form.Entreprise.Adresse.numeroRue, {'label':'N° ','attr': {'placeholder': 'Saisir n°...', 'class':"form-control", 'size':"10"}})}}
+                                        </div>
+                                        <div class="col-9">
+                                        {{form_row(form.Entreprise.Adresse.nomRue, {'label':'Nom de la rue','attr': {'placeholder': 'Saisir nom de rue...', 'class':"form-control", 'size':"40"}})}}
+                                        </div>
+                                    </div>   
+                                    <div class="row">
+                                        <div class="col-3">
+                                        {{form_row(form.Entreprise.Adresse.codePostal, {'label':'Code postal ','attr': {'placeholder': 'Saisir code postal...', 'class':"form-control", 'size':"10"}})}}
+                                        </div>
+                                        <div class="col-9">
+                                        {{form_row(form.Entreprise.Adresse.ville, {'label':'Ville','attr': {'placeholder': 'Saisir votre ville...', 'class':"form-control", 'size':"40"}})}}
+                                        </div>
+                                    </div>  
+                                    <div class="row">
+                                        <div class="col-12">
+                                        {{form_row(form.Entreprise.Adresse.region, {'label':'Région ','attr': {'placeholder': 'Saisir région...', 'class':"form-control", 'size':"40"}})}}
+                                        </div>       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="collapse" id="Etudiant">
+                                <div class="form-group">
+                                    <label for="document">Document</label>
+                                        {{ form_row(form.documents) }}
+                                    
+                                    {# <input id="document" type="file" class="form-control" name="document" placeholder="Veuillez uploader votre justificatif"> #}
+                                </div>
+                            </div>
+                </div>
+                <div class="checkbox pl-5  pt-5">
+                    <label><input type="checkbox" value="" required> En vous inscrivant, vous affirmez avoir pris connainssance des <a target="_blank" href="/docs/Charte à l'inscription Génération Boomerang.pdf" style="color:rgb(244,69,6)">conditions générales</a></label>
+                </div>
+                </div>
+                <div class="d-flex justify-content-center pb-5 pt-5 buttonFooter">
+                            <button type="submit" class="btn " style="width:300px;">S'enregistrer</button>
+                </div>
+
+            {{form_end(form)}}
+        </div>    
+    </div>
+</div>
+
+    {# <div class="container">
+        <div class="row md-6">
+            <div class="col">
+        
+
+                <h1 class="text-center">Inscrivez vous sur notre site !</h1>
+              
+                    {{form_start(form)}}
+                        {{form_row(form.email, {'label':'Email','attr': {'placeholder': 'Votre adresse email', 'class':"form-control"}})}}
+                        <div class="my-3">
+                            {{form_row(form.password, {'label':'Mot de passe','attr': {'placeholder': 'Veuillez choisir un mot de passe robuste', 'class':"form-control"}})}}
+                        </div>
+                        {{form_row(form.passwordConfirm, {'label':'Confirmation mot de passe','attr': {'placeholder': 'Veuillez retaper votre mot de passe...', 'class':"form-control"}})}}
+                        <div class="my-3">
+                            {{form_row(form.firstName, {'label':'Prénom','attr': {'placeholder': 'Votre prénom ...', 'class':"form-control"}})}}
+                        </div>
+                            {{form_row(form.lastName, {'label':'Nom','attr': {'placeholder': 'Votre nom ...', 'class':"form-control"}})}}
+                        <div class="my-3">
+                            {{form_row(form.imageFile, {'label':'Votre avatar','attr': {'placeholder': 'Image', 'class':"form-control"}})}}
+                        </div>
+                        {{form_row(form.description, {'label':'Introduction','attr': {'placeholder': 'Présentez vous en quelques mots ...', 'class':"form-control"}})}}
+                        
+                        <hr>
+                        <h3 class="text-center">Adresse</h3>
+                        <div class="form-group">
+                        {{form_row(form.Adresse.numeroRue, {'label':'Numéro de la rue','attr': {'placeholder': 'Veuillez entrer le numéro de votre rue ...', 'class':"form-control"}})}}
+                        
+                        </div>
+                        <div class="form-group">
+                        {{form_row(form.Adresse.nomRue, {'label':'Nom de la rue','attr': {'placeholder': 'Veuillez entrer le nom de votre rue ...', 'class':"form-control"}})}}
+                        
+                        </div>
+                        <div class="form-group">
+                        {{form_row(form.Adresse.codePostal, {'label':'le code Postal','attr': {'placeholder': 'Veuillez entrer le code postal de votre commune ...', 'class':"form-control"}})}}
+                        
+                        </div>
+                        <div class="form-group">
+                        {{form_row(form.Adresse.ville, {'label':'ville','attr': {'placeholder': 'Veuillez entrer votre ville ...', 'class':"form-control"}})}}
+                       
+                        </div>
+                         <div class="form-group">
+                        {{form_row(form.Adresse.region, {'label':'Région','attr': {'placeholder': 'Veuillez entrer votre région ...', 'class':"form-control"}})}}
+                        </div>
+
+                        <div class="d-flex justify-content-end my-3">
+                            <button type="submit" class="btn btn-success">Confirmez votre inscription</button>
+                        </div>
+                    {{form_end(form)}}
+            </div>
+        </div>
+    </div> #}
+
+    
+{% endblock %}
+{% block javascripts %}
+    {# <script src="/js/croppie.js"></script>
+    <script src="/js/photoResize.js"></script> #}
+    <script>
+        function selectStatus(event){
+           document.getElementById(event.target.value).classList.add('show')
+        }
+    </script>
+{% endblock %}

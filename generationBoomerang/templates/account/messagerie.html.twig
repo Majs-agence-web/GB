@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<section class="container">
+    <main class="row">
+        <div class="col-12 my-1 d-flex justify-content-between">
+            <h1>Votre messagerie</h1>
+            <p><a class="btn btn-primary" href="newmessage.php">Nouveau message</a></p>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <th><i class="la la-envelope"></i></th>
+                    <th>De</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th>Supprimer</th>
+                </thead>
+                <tbody>
+                    {# {% for message in messages %}
+                        <tr>
+                            <td>{{message.unread}} <i class="las la-envelope"></i>' : '<i class="las la-envelope-open"></i></td>
+                            <td>{{message.expediteur}}</td>
+                            <td>{{message.message}}</td>
+                            <td>{{message.createdAt}}</td>
+                            <td><a href="message.php?id=<?= $message['id'] ?>" class="btn btn-success" title="Lire"><i class="la la-search"></i></a><a href="#" class="btn btn-danger" title="supprimer"><i class="la la-minus"></i></a></td>
+                        </tr>
+                    {% endfor %} #}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</section>
+{% endblock %}
